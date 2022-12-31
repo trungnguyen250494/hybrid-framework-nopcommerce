@@ -82,4 +82,8 @@ public class RegisterPageObject extends BasePage {
 		return getElementText(driver, RegisterPageUI.EXISTING_EMAIL_ERROR_MESSAGE);
 	}
 
+	public void scrollToEmail() {
+		scrollToElement(driver, RegisterPageUI.EMAIL_TEXTBOX);		
+	}
+
 }

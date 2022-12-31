@@ -62,6 +62,7 @@ public class Level_04_Multiple_Browsers extends BaseTest{
 		System.out.println("Register_02 - Step 02: Input all fields value");
 		registerPage.inputToFirstNameTextbox(firstName);
 		registerPage.inputToLasttNameTextbox(lastName);
+		registerPage.scrollToEmail();
 		registerPage.inputToEmailTextbox("abc#xyz");
 		registerPage.inputToPasswordTextbox(password);
 		registerPage.inputToConfirmPasswordTextbox(confirmPassword);
