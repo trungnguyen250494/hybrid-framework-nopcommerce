@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import commons.BaseTest;
 import pageObjects.HomePageObject;
 import pageObjects.LoginPageObject;
-import pageObjects.MyAccountPageObject;
+import pageObjects.CustomerPageObject;
 import pageObjects.PageGeneratorManager;
 import pageObjects.RegisterPageObject;
 
@@ -23,7 +23,7 @@ public class Level_06_Page_Generator_Manager_III extends BaseTest{
 	private HomePageObject homePage;
 	private LoginPageObject loginPage;
 	private RegisterPageObject registerPage;
-	private MyAccountPageObject myAccountPage;
+	private CustomerPageObject myAccountPage;
 	
 
 	@Parameters("browser")
