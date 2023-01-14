@@ -18,7 +18,7 @@ public class BaseTest {
 	private String projectPath = System.getProperty("user.dir");
 	private long timeout = 30;
 
-	protected WebDriver getBrowserDriver(String browserName) {
+	protected WebDriver getBrowserDriver(String browserName, String environmentName) {
 		
 		if(browserName.equals("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
@@ -72,7 +72,23 @@ public class BaseTest {
 		
 		driver.manage().timeouts().implicitlyWait(timeout, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		driver.get("https://demo.nopcommerce.com/");
+		driver.get(getEnvironmentUrl(environmentName));
 		return driver;
+	}
+	
+	private String getEnvironmentUrl (String environmentName) {
+		String url = null;
+		switch(environmentName) {
+		case "dev":
+			url = GlobalConstants.USER_PAGE_URL;
+			break;
+		
+		case "staging":
+			url = "";
+			break;
+		default:
+			break;
+		}
+		return url;
 	}
 }

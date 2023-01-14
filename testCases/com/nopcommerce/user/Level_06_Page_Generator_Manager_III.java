@@ -11,26 +11,26 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.HomePageObject;
-import pageObjects.LoginPageObject;
-import pageObjects.CustomerPageObject;
-import pageObjects.PageGeneratorManager;
-import pageObjects.RegisterPageObject;
+import commons.PageGeneratorManager;
+import pageObjects.portal.UserCustomerPageObject;
+import pageObjects.portal.UserHomePageObject;
+import pageObjects.portal.UserLoginPageObject;
+import pageObjects.portal.UserRegisterPageObject;
 
 public class Level_06_Page_Generator_Manager_III extends BaseTest{
 	private WebDriver driver;
 	private String validEmail, firstName, lastName, correctPassword, confirmPassword, invalidEmail, notFoundEmail, incorrectPassword;
-	private HomePageObject homePage;
-	private LoginPageObject loginPage;
-	private RegisterPageObject registerPage;
-	private CustomerPageObject myAccountPage;
+	private UserHomePageObject homePage;
+	private UserLoginPageObject loginPage;
+	private UserRegisterPageObject registerPage;
+	private UserCustomerPageObject myAccountPage;
 	
 
-	@Parameters("browser")
+	@Parameters({"browser","environment"})
 	@BeforeClass
-	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
-		homePage = PageGeneratorManager.getHomePage(driver);
+	public void beforeClass(String browserName, String environmentName) {
+		driver = getBrowserDriver(browserName,environmentName);
+		homePage = PageGeneratorManager.getUserHomePage(driver);
 
 		firstName = "Tester";
 		lastName = "Tester";
@@ -166,7 +166,7 @@ public class Level_06_Page_Generator_Manager_III extends BaseTest{
 
 		System.out.println("Login_06 - Step 05: Verify Log out link display");
 		
-		homePage = new HomePageObject(driver);
+		homePage = new UserHomePageObject(driver);
 		Assert.assertTrue(homePage.isLogoutLinkDisplayed());
 		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
 		

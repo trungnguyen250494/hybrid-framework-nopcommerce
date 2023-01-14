@@ -1,27 +1,28 @@
-package pageObjects;
+package pageObjects.portal;
 
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
-import pageUIs.HomePageUI;
+import commons.PageGeneratorManager;
+import pageUIs.user.HomePageUI;
 
-public class HomePageObject extends BasePage{
+public class UserHomePageObject extends BasePage{
 	private WebDriver driver;
 
-	public HomePageObject(WebDriver driver) {
+	public UserHomePageObject(WebDriver driver) {
 		this.driver = driver;
 	}
 
-	public RegisterPageObject clickToRegisterLink() {
+	public UserRegisterPageObject clickToRegisterLink() {
 		waitForElementClickable(driver, HomePageUI.REGISTER_LINK);
 		clickToElement(driver, HomePageUI.REGISTER_LINK);
-		return PageGeneratorManager.getRegisterPage(driver);
+		return PageGeneratorManager.getUserRegisterPage(driver);
 	}
 
-	public LoginPageObject clickToLoginLink() {
+	public UserLoginPageObject clickToLoginLink() {
 		waitForElementClickable(driver, HomePageUI.LOGIN_LINK);
 		clickToElement(driver, HomePageUI.LOGIN_LINK);
-		return PageGeneratorManager.getLoginPage(driver);
+		return PageGeneratorManager.getUserLoginPage(driver);
 	}
 
 	public boolean isLogoutLinkDisplayed() {
@@ -34,10 +35,10 @@ public class HomePageObject extends BasePage{
 		return isElementDisplayed(driver, HomePageUI.MY_ACCOUNT_LINK);
 	}
 
-	public CustomerPageObject clickToMyAccountLink() {
+	public UserCustomerPageObject clickToMyAccountLink() {
 		waitForElementClickable(driver, HomePageUI.MY_ACCOUNT_LINK);
 		clickToElement(driver, HomePageUI.MY_ACCOUNT_LINK);
-		return PageGeneratorManager.getCustomerInfoPage(driver);
+		return PageGeneratorManager.getUserCustomerInfoPage(driver);
 	}
 
 }

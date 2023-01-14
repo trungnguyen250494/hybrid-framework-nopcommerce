@@ -1,15 +1,15 @@
-package pageObjects;
+package pageObjects.portal;
 
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
-import pageUIs.CustomerPageUI;
-import pageUIs.RegisterPageUI;
+import pageUIs.user.CustomerPageUI;
+import pageUIs.user.RegisterPageUI;
 
-public class CustomerPageObject extends BasePage {
+public class UserCustomerPageObject extends BasePage {
 	private WebDriver driver;
 
-	public CustomerPageObject(WebDriver driver) {
+	public UserCustomerPageObject(WebDriver driver) {
 		this.driver = driver;
 	}
 

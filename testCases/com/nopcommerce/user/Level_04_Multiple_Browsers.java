@@ -8,20 +8,20 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.HomePageObject;
-import pageObjects.RegisterPageObject;
+import pageObjects.portal.UserHomePageObject;
+import pageObjects.portal.UserRegisterPageObject;
 
 public class Level_04_Multiple_Browsers extends BaseTest{
 	private WebDriver driver;
 	private String firstName,lastName,password,confirmPassword;
-	private HomePageObject homePage;
-	private RegisterPageObject registerPage;
+	private UserHomePageObject homePage;
+	private UserRegisterPageObject registerPage;
 
-	@Parameters("browser")
+	@Parameters({"browser","environment"})
 	@BeforeClass
-	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
-		homePage = new HomePageObject(driver);
+	public void beforeClass(String browserName, String environmentName) {
+		driver = getBrowserDriver(browserName,environmentName);
+		homePage = new UserHomePageObject(driver);
 		
 		firstName = "Tester";
 		lastName = "Tester";
@@ -37,7 +37,7 @@ public class Level_04_Multiple_Browsers extends BaseTest{
 		
 		homePage.clickToRegisterLink();
 		
-		registerPage = new RegisterPageObject(driver);
+		registerPage = new UserRegisterPageObject(driver);
 		
 		System.out.println("Register_01 - Step 02: Click to the Register button");
 
@@ -57,7 +57,7 @@ public class Level_04_Multiple_Browsers extends BaseTest{
 
 		System.out.println("Register_02 - Step 01: Click to the Register link");
 		homePage.clickToRegisterLink();
-		registerPage = new RegisterPageObject(driver);
+		registerPage = new UserRegisterPageObject(driver);
 
 		System.out.println("Register_02 - Step 02: Input all fields value");
 		registerPage.inputToFirstNameTextbox(firstName);

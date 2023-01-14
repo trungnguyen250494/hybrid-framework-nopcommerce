@@ -11,32 +11,32 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.HomePageObject;
-import pageObjects.LoginPageObject;
-import pageObjects.AddressPageObject;
-import pageObjects.CustomerPageObject;
-import pageObjects.PageGeneratorManager;
-import pageObjects.ProductReviewPageObject;
-import pageObjects.RegisterPageObject;
-import pageObjects.RewardPointPageObject;
+import commons.PageGeneratorManager;
+import pageObjects.portal.UserAddressPageObject;
+import pageObjects.portal.UserCustomerPageObject;
+import pageObjects.portal.UserHomePageObject;
+import pageObjects.portal.UserLoginPageObject;
+import pageObjects.portal.UserProductReviewPageObject;
+import pageObjects.portal.UserRegisterPageObject;
+import pageObjects.portal.UserRewardPointPageObject;
 
 public class Level_07_Switch_Page extends BaseTest{
 	private WebDriver driver;
 	private String validEmail, firstName, lastName, correctPassword, confirmPassword, invalidEmail, notFoundEmail, incorrectPassword;
-	private HomePageObject homePage;
-	private LoginPageObject loginPage;
-	private RegisterPageObject registerPage;
-	private CustomerPageObject customerInfoPage;
-	private AddressPageObject addressPage;
-	private ProductReviewPageObject productReviewPage;
-	private RewardPointPageObject rewardPointPage;
+	private UserHomePageObject homePage;
+	private UserLoginPageObject loginPage;
+	private UserRegisterPageObject registerPage;
+	private UserCustomerPageObject customerInfoPage;
+	private UserAddressPageObject addressPage;
+	private UserProductReviewPageObject productReviewPage;
+	private UserRewardPointPageObject rewardPointPage;
 	
 
-	@Parameters("browser")
+	@Parameters({"browser","environment"})
 	@BeforeClass
-	public void beforeClass(String browserName) {
-		driver = getBrowserDriver(browserName);
-		homePage = PageGeneratorManager.getHomePage(driver);
+	public void beforeClass(String browserName, String environmentName) {
+		driver = getBrowserDriver(browserName,environmentName);
+		homePage = PageGeneratorManager.getUserHomePage(driver);
 
 		firstName = "Tester";
 		lastName = "Tester";
@@ -67,7 +67,7 @@ public class Level_07_Switch_Page extends BaseTest{
 		loginPage.inputToEmail(validEmail);
 		loginPage.inputToPassword(correctPassword);
 		loginPage.clickToLoginButton();
-		homePage = new HomePageObject(driver);
+		homePage = new UserHomePageObject(driver);
 		Assert.assertTrue(homePage.isLogoutLinkDisplayed());
 		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
 		

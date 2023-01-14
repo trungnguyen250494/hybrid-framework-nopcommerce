@@ -1,21 +1,23 @@
-package pageObjects;
+package pageObjects.portal;
 
 import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
-import pageUIs.LoginPageUI;
-import pageUIs.RegisterPageUI;
+import commons.PageGeneratorManager;
+import pageUIs.user.LoginPageUI;
+import pageUIs.user.RegisterPageUI;
 
-public class LoginPageObject extends BasePage{
+public class UserLoginPageObject extends BasePage{
 	private WebDriver driver;
 	
-	public LoginPageObject (WebDriver driver) {
+	public UserLoginPageObject (WebDriver driver) {
 		this.driver = driver;
 	}
 
-	public void clickToLoginButton() {
+	public UserHomePageObject clickToLoginButton() {
 		waitForElementClickable(driver, LoginPageUI.REGISTER_BUTTON);
 		clickToElement(driver, LoginPageUI.REGISTER_BUTTON);
+		return PageGeneratorManager.getUserHomePage(driver);
 		
 	}
 
@@ -41,7 +43,13 @@ public class LoginPageObject extends BasePage{
 		sendKeyToElement(driver, LoginPageUI.PASSWORD_TEXTBOX, password);
 		
 	}
-	
+
+	public UserHomePageObject loginAsUser(String email, String password) {
+		inputToEmail(email);
+		inputToPassword(password);
+		return clickToLoginButton();
+		
+	}
 	
 
 }

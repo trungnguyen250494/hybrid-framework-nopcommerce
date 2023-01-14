@@ -8,9 +8,10 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pageObjects.HomePageObject;
-import pageObjects.LoginPageObject;
-import pageObjects.RegisterPageObject;
+
+import pageObjects.portal.UserHomePageObject;
+import pageObjects.portal.UserLoginPageObject;
+import pageObjects.portal.UserRegisterPageObject;
 
 public class Level_06_Page_Generator_Manager_II {
 	private WebDriver driver;
@@ -19,9 +20,9 @@ public class Level_06_Page_Generator_Manager_II {
 	private String osName = System.getProperty("os.name");
 	private String validEmail, firstName, lastName, correctPassword, confirmPassword, invalidEmail, notFoundEmail, incorrectPassword;
 	private long timeout = 30;
-	private HomePageObject homePage;
-	private LoginPageObject loginPage;
-	private RegisterPageObject registerPage;
+	private UserHomePageObject homePage;
+	private UserLoginPageObject loginPage;
+	private UserRegisterPageObject registerPage;
 
 	@BeforeClass
 	public void beforeClass() {
@@ -36,7 +37,7 @@ public class Level_06_Page_Generator_Manager_II {
 		driver.manage().window().maximize();
 
 		driver.get("https://demo.nopcommerce.com/");
-		homePage = new HomePageObject(driver);
+		homePage = new UserHomePageObject(driver);
 
 		firstName = "Tester";
 		lastName = "Tester";
@@ -172,7 +173,7 @@ public class Level_06_Page_Generator_Manager_II {
 
 		System.out.println("Login_06 - Step 05: Verify Log out link display");
 		
-		homePage = new HomePageObject(driver);
+		homePage = new UserHomePageObject(driver);
 		Assert.assertTrue(homePage.isLogoutLinkDisplayed());
 		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
 	}
