@@ -20,49 +20,51 @@ public class BaseTest {
 
 	protected WebDriver getBrowserDriver(String browserName, String environmentName) {
 		
-		if(browserName.equals("firefox")) {
+		BrowserList browser = BrowserList.valueOf(browserName.toUpperCase());
+		
+		if(browser == BrowserList.FIREFOX) {
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 		}
-		else if(browserName.equals("h_firefox")) {
+		else if(browser == BrowserList.H_FIREFOX) {
 			FirefoxOptions options = new FirefoxOptions();
 			options.addArguments("--headless");
 			options.addArguments("window-size=1920x1080");
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver(options);
 		}
-		else if(browserName.equals("chrome")) {
+		else if(browser == BrowserList.CHROME) {
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
 		}
-		else if(browserName.equals("h_chrome")) {
+		else if(browser == BrowserList.H_CHROME) {
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--headless");
 			options.addArguments("window-size=1920x1080");
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver(options);
 		}
-		else if(browserName.equals("coccoc")) {
+		else if(browser == BrowserList.COC_COC) {
 			WebDriverManager.chromedriver().driverVersion("108.0.5359.71").setup();
 			ChromeOptions options = new ChromeOptions();
 			options.setBinary("/Applications/CocCoc.app/Contents/MacOS/CocCoc");
 			driver = new ChromeDriver(options);
 		}
-		else if(browserName.equals("brave")) {
+		else if(browser == BrowserList.BRAVE) {
 			WebDriverManager.chromedriver().driverVersion("108.0.5359.71").setup();
 			ChromeOptions options = new ChromeOptions();
 			options.setBinary("/Applications/Brave Browser.app/Contents/MacOS/Brave Browser");
 			driver = new ChromeDriver(options);
 		}
-		else if(browserName.equals("opera")) {
+		else if(browser == BrowserList.OPERA) {
 			WebDriverManager.operadriver().setup();
 			driver = new OperaDriver();
 		}
-		else if(browserName.equals("edge")) {
+		else if(browser == BrowserList.EDGE) {
 			WebDriverManager.edgedriver().setup();
 			driver = new EdgeDriver();
 		}
-		else if(browserName.equals("safari")) {
+		else if(browser == BrowserList.SAFARI) {
 			WebDriverManager.safaridriver().setup();
 			driver = new SafariDriver();
 		}
@@ -78,12 +80,13 @@ public class BaseTest {
 	
 	private String getEnvironmentUrl (String environmentName) {
 		String url = null;
-		switch(environmentName) {
-		case "dev":
+		EnvironmentList environment = EnvironmentList.valueOf(environmentName.toUpperCase());
+		switch(environment) {
+		case DEV:
 			url = GlobalConstants.USER_PAGE_URL;
 			break;
 		
-		case "staging":
+		case STAGING:
 			url = "";
 			break;
 		default:
