@@ -15,8 +15,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
 	private WebDriver driver;
-	private String projectPath = System.getProperty("user.dir");
-	private long timeout = 30;
 
 	protected WebDriver getBrowserDriver(String browserName, String environmentName) {
 		
@@ -72,7 +70,7 @@ public class BaseTest {
 			throw new RuntimeException("Invalid browserName");
 		}
 		
-		driver.manage().timeouts().implicitlyWait(timeout, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		driver.get(getEnvironmentUrl(environmentName));
 		return driver;

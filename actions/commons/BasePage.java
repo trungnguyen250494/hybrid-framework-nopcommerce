@@ -15,6 +15,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import net.bytebuddy.agent.builder.AgentBuilder.CircularityLock.Global;
 import pageObjects.admin.AdminLoginPageObject;
 import pageObjects.portal.UserAddressPageObject;
 import pageObjects.portal.UserCustomerPageObject;
@@ -58,7 +59,7 @@ public class BasePage {
 	}
 
 	protected Alert waitForAlertPresence(WebDriver driver) {
-		WebDriverWait explicitWait = new WebDriverWait(driver, timeout);
+		WebDriverWait explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		return explicitWait.until(ExpectedConditions.alertIsPresent());
 	}
 
@@ -357,7 +358,7 @@ public class BasePage {
 	}
 
 	protected boolean areJQueryAndJSLoadedSuccess(WebDriver driver) {
-		WebDriverWait explicitWait = new WebDriverWait(driver, timeout);
+		WebDriverWait explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		JavascriptExecutor jsExecutor;
 		jsExecutor = (JavascriptExecutor) driver;
 
@@ -400,47 +401,47 @@ public class BasePage {
 	}
 	
 	protected void waitUntilElementVisible(WebDriver driver, String elementLocator) {
-		WebDriverWait explicitWait = new WebDriverWait(driver, timeout);
+		WebDriverWait explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		explicitWait.until(ExpectedConditions.visibilityOf(getWebElement(driver, elementLocator)));
 	}
 	
 	protected void waitUntilElementVisible(WebDriver driver, String elementLocator, String...dynamicValues) {
-		WebDriverWait explicitWait = new WebDriverWait(driver, timeout);
+		WebDriverWait explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		explicitWait.until(ExpectedConditions.visibilityOf(getWebElement(driver, getDynamicXpath(elementLocator, dynamicValues))));
 	}
 
 	protected void waitUntilAllElementsVisible(WebDriver driver, String elementsLocator) {
-		WebDriverWait explicitWait = new WebDriverWait(driver, timeout);
+		WebDriverWait explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		explicitWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(getByXpath(elementsLocator)));
 	}
 	
 	protected void waitUntilElementInvisible(WebDriver driver, String elementLocator) {
-		WebDriverWait explicitWait = new WebDriverWait(driver, timeout);
+		WebDriverWait explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		explicitWait.until(ExpectedConditions.invisibilityOf(getWebElement(driver, elementLocator)));
 	}
 
 	protected void waitUntilAllElementsInvisible(WebDriver driver, String elementsLocator) {
-		WebDriverWait explicitWait = new WebDriverWait(driver, timeout);
+		WebDriverWait explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		explicitWait.until(ExpectedConditions.invisibilityOfAllElements(getListOfWebElements(driver, elementsLocator)));
 	}
 	
 	protected void waitForElementClickable(WebDriver driver, String elementsLocator) {
-		WebDriverWait explicitWait = new WebDriverWait(driver, timeout);
+		WebDriverWait explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		explicitWait.until(ExpectedConditions.elementToBeClickable(getByLocator(elementsLocator)));
 	}
 	
 	protected void waitForElementClickable(WebDriver driver, String elementsLocator, String...dynamicValues) {
-		WebDriverWait explicitWait = new WebDriverWait(driver, timeout);
+		WebDriverWait explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		explicitWait.until(ExpectedConditions.elementToBeClickable(getByLocator(getDynamicXpath(elementsLocator, dynamicValues))));
 	}
 	
 	protected WebElement waitUntilElementPrecense(WebDriver driver, String elementLocator) {
-		WebDriverWait explicitWait = new WebDriverWait(driver, timeout);
+		WebDriverWait explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		return explicitWait.until(ExpectedConditions.visibilityOf(getWebElement(driver, elementLocator)));
 	}
 
 	protected List<WebElement> waitUntilAllElementsPrecense(WebDriver driver, String elementsLocator) {
-		WebDriverWait explicitWait = new WebDriverWait(driver, timeout);
+		WebDriverWait explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		return explicitWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByLocator(elementsLocator)));
 	}
 	
@@ -497,6 +498,5 @@ public class BasePage {
 		return PageGeneratorManager.getAdminLoginPage(driver);
 		
 	}
-	private long timeout = 30;
 	
 }
