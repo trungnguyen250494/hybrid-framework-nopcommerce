@@ -81,10 +81,10 @@ public class Level_07_Switch_Page extends BaseTest {
 
 	@Test
 	public void User_04_Switch_Page() {
-		addressPage = customerInfoPage.openAddressPage(driver);
-		productReviewPage = addressPage.openProductReviewPage(driver);
-		rewardPointPage = productReviewPage.openRewardPointPage(driver);
-		customerInfoPage = rewardPointPage.openCustomerInfoPage(driver);
+		addressPage = customerInfoPage.openAddressPage();
+		productReviewPage = addressPage.openProductReviewPage();
+		rewardPointPage = productReviewPage.openRewardPointPage();
+		customerInfoPage = rewardPointPage.openCustomerInfoPage();
 		Assert.assertTrue(customerInfoPage.isNewsLetterChecked());
 	}
 

@@ -445,30 +445,6 @@ public class BasePage {
 		return explicitWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByLocator(elementsLocator)));
 	}
 	
-	public UserAddressPageObject openAddressPage(WebDriver driver) {
-		waitForElementClickable(driver, BasePageUI.ADDRESS_LINK);
-		clickToElement(driver, BasePageUI.ADDRESS_LINK);
-		return PageGeneratorManager.getUserAddressPage(driver);
-	}
-	
-	public UserProductReviewPageObject openProductReviewPage(WebDriver driver) {
-		waitForElementClickable(driver, BasePageUI.PRODUCT_REVIEW_LINK);
-		clickToElement(driver, BasePageUI.PRODUCT_REVIEW_LINK);
-		return PageGeneratorManager.getUserProductReviewPage(driver);
-	}
-	
-	public UserRewardPointPageObject openRewardPointPage(WebDriver driver) {
-		waitForElementClickable(driver, BasePageUI.REWARD_POINT_LINK);
-		clickToElement(driver, BasePageUI.REWARD_POINT_LINK);
-		return PageGeneratorManager.getUserRewardPointPage(driver);
-	}
-	
-	public UserCustomerPageObject openCustomerInfoPage(WebDriver driver) {
-		waitForElementClickable(driver, BasePageUI.CUSTOMER_INFO_LINK);
-		clickToElement(driver, BasePageUI.CUSTOMER_INFO_LINK);
-		return PageGeneratorManager.getUserCustomerInfoPage(driver);
-	}
-	
 	public BasePage openPagesAtMyAccountByName(WebDriver driver, String pageName) {
 		waitForElementClickable(driver, BasePageUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_AREA,pageName);
 		clickToElement(driver, BasePageUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_AREA,pageName);

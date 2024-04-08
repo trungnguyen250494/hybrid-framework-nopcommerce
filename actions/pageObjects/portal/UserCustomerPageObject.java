@@ -6,10 +6,11 @@ import commons.BasePage;
 import pageUIs.user.CustomerPageUI;
 import pageUIs.user.RegisterPageUI;
 
-public class UserCustomerPageObject extends BasePage {
+public class UserCustomerPageObject extends UserMyAccountSideBarObject {
 	private WebDriver driver;
 
 	public UserCustomerPageObject(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 	}
 
