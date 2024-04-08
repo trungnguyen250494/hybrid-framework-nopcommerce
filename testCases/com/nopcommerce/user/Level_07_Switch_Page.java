@@ -20,7 +20,7 @@ import pageObjects.portal.UserProductReviewPageObject;
 import pageObjects.portal.UserRegisterPageObject;
 import pageObjects.portal.UserRewardPointPageObject;
 
-public class Level_07_Switch_Page extends BaseTest{
+public class Level_07_Switch_Page extends BaseTest {
 	private WebDriver driver;
 	private String validEmail, firstName, lastName, correctPassword, confirmPassword, invalidEmail, notFoundEmail, incorrectPassword;
 	private UserHomePageObject homePage;
@@ -30,12 +30,11 @@ public class Level_07_Switch_Page extends BaseTest{
 	private UserAddressPageObject addressPage;
 	private UserProductReviewPageObject productReviewPage;
 	private UserRewardPointPageObject rewardPointPage;
-	
 
-	@Parameters({"browser","environment"})
+	@Parameters({ "browser", "environment" })
 	@BeforeClass
 	public void beforeClass(String browserName, String environmentName) {
-		driver = getBrowserDriver(browserName,environmentName);
+		driver = getBrowserDriver(browserName, environmentName);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 
 		firstName = "Tester";
@@ -70,7 +69,6 @@ public class Level_07_Switch_Page extends BaseTest{
 		homePage = new UserHomePageObject(driver);
 		Assert.assertTrue(homePage.isLogoutLinkDisplayed());
 		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
-		
 	}
 
 	@Test
@@ -88,10 +86,7 @@ public class Level_07_Switch_Page extends BaseTest{
 		rewardPointPage = productReviewPage.openRewardPointPage(driver);
 		customerInfoPage = rewardPointPage.openCustomerInfoPage(driver);
 		Assert.assertTrue(customerInfoPage.isNewsLetterChecked());
-
 	}
-
-	
 
 	public int getRandomNumber() {
 		Random rd = new Random();

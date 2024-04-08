@@ -22,6 +22,7 @@ public class BaseTest {
 		
 		if(browser == BrowserList.FIREFOX) {
 			WebDriverManager.firefoxdriver().setup();
+			System.setProperty("webdriver.firefox.bin", "/Applications/Firefox.app/Contents/MacOS/firefox");
 			driver = new FirefoxDriver();
 		}
 		else if(browser == BrowserList.H_FIREFOX) {
@@ -29,10 +30,11 @@ public class BaseTest {
 			options.addArguments("--headless");
 			options.addArguments("window-size=1920x1080");
 			WebDriverManager.firefoxdriver().setup();
+			System.setProperty("webdriver.firefox.bin", "/Applications/Firefox.app/Contents/MacOS/firefox");
 			driver = new FirefoxDriver(options);
 		}
 		else if(browser == BrowserList.CHROME) {
-			WebDriverManager.chromedriver().setup();
+			WebDriverManager.chromedriver().clearDriverCache().setup();
 			driver = new ChromeDriver();
 		}
 		else if(browser == BrowserList.H_CHROME) {
