@@ -20,7 +20,7 @@ import pageObjects.portal.UserProductReviewPageObject;
 import pageObjects.portal.UserRegisterPageObject;
 import pageObjects.portal.UserRewardPointPageObject;
 
-public class Level_09_Dynamic_Locator extends BaseTest{
+public class Level_09_Global_Constant_Dynamic_Locator extends BaseTest{
 	private WebDriver driver;
 	private String validEmail, firstName, lastName, correctPassword, confirmPassword, invalidEmail, notFoundEmail, incorrectPassword;
 	private UserHomePageObject homePage;
@@ -83,10 +83,23 @@ public class Level_09_Dynamic_Locator extends BaseTest{
 
 	@Test
 	public void User_04_Dynamic_Page() {
-		addressPage = (UserAddressPageObject) customerInfoPage.openPagesAtMyAccountByName(driver, "Addresses");
-		productReviewPage = (UserProductReviewPageObject) addressPage.openPagesAtMyAccountByName(driver, "My product reviews");
-		rewardPointPage = (UserRewardPointPageObject) productReviewPage.openPagesAtMyAccountByName(driver, "Reward points");
-		customerInfoPage = (UserCustomerPageObject) rewardPointPage.openPagesAtMyAccountByName(driver, "Customer info");
+		addressPage = (UserAddressPageObject) customerInfoPage.openDynamicSideBar("Addresses");
+		productReviewPage = (UserProductReviewPageObject) addressPage.openDynamicSideBar("My product reviews");
+		rewardPointPage = (UserRewardPointPageObject) productReviewPage.openDynamicSideBar("Reward points");
+		customerInfoPage = (UserCustomerPageObject) rewardPointPage.openDynamicSideBar("Customer info");
+		Assert.assertTrue(customerInfoPage.isNewsLetterChecked());
+
+	}
+	
+	@Test
+	public void User_05_Dynamic_Page_2() {
+		customerInfoPage.openDynamicSideBarByName("Addresses");
+		addressPage = PageGeneratorManager.getUserAddressPage(driver);
+		addressPage.openDynamicSideBarByName("My product reviews");
+		productReviewPage = PageGeneratorManager.getUserProductReviewPage(driver);
+		productReviewPage.openDynamicSideBarByName("Customer info");
+		customerInfoPage = PageGeneratorManager.getUserCustomerInfoPage(driver);
+
 		Assert.assertTrue(customerInfoPage.isNewsLetterChecked());
 
 	}
