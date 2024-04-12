@@ -17,75 +17,119 @@ public class BaseTest {
 	private WebDriver driver;
 
 	protected WebDriver getBrowserDriver(String browserName, String environmentName) {
-		
+
 		BrowserList browser = BrowserList.valueOf(browserName.toUpperCase());
-		
-		if(browser == BrowserList.FIREFOX) {
+
+		if (browser == BrowserList.FIREFOX) {
 			WebDriverManager.firefoxdriver().setup();
 			System.setProperty("webdriver.firefox.bin", "/Applications/Firefox.app/Contents/MacOS/firefox");
 			driver = new FirefoxDriver();
-		}
-		else if(browser == BrowserList.H_FIREFOX) {
+		} else if (browser == BrowserList.H_FIREFOX) {
 			FirefoxOptions options = new FirefoxOptions();
 			options.addArguments("--headless");
 			options.addArguments("window-size=1920x1080");
 			WebDriverManager.firefoxdriver().setup();
 			System.setProperty("webdriver.firefox.bin", "/Applications/Firefox.app/Contents/MacOS/firefox");
 			driver = new FirefoxDriver(options);
-		}
-		else if(browser == BrowserList.CHROME) {
+		} else if (browser == BrowserList.CHROME) {
 			WebDriverManager.chromedriver().clearDriverCache().setup();
 			driver = new ChromeDriver();
-		}
-		else if(browser == BrowserList.H_CHROME) {
+		} else if (browser == BrowserList.H_CHROME) {
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--headless");
 			options.addArguments("window-size=1920x1080");
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver(options);
-		}
-		else if(browser == BrowserList.COC_COC) {
+		} else if (browser == BrowserList.COC_COC) {
 			WebDriverManager.chromedriver().driverVersion("108.0.5359.71").setup();
 			ChromeOptions options = new ChromeOptions();
 			options.setBinary("/Applications/CocCoc.app/Contents/MacOS/CocCoc");
 			driver = new ChromeDriver(options);
-		}
-		else if(browser == BrowserList.BRAVE) {
+		} else if (browser == BrowserList.BRAVE) {
 			WebDriverManager.chromedriver().driverVersion("108.0.5359.71").setup();
 			ChromeOptions options = new ChromeOptions();
 			options.setBinary("/Applications/Brave Browser.app/Contents/MacOS/Brave Browser");
 			driver = new ChromeDriver(options);
-		}
-		else if(browser == BrowserList.OPERA) {
+		} else if (browser == BrowserList.OPERA) {
 			WebDriverManager.operadriver().setup();
 			driver = new OperaDriver();
-		}
-		else if(browser == BrowserList.EDGE) {
+		} else if (browser == BrowserList.EDGE) {
 			WebDriverManager.edgedriver().setup();
 			driver = new EdgeDriver();
-		}
-		else if(browser == BrowserList.SAFARI) {
+		} else if (browser == BrowserList.SAFARI) {
 			WebDriverManager.safaridriver().setup();
 			driver = new SafariDriver();
-		}
-		else {
+		} else {
 			throw new RuntimeException("Invalid browserName");
 		}
-		
+
 		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		driver.get(getEnvironmentUrl(environmentName));
 		return driver;
 	}
-	
-	private String getEnvironmentUrl (String environmentName) {
+
+	protected WebDriver getBrowserDriverWithUrl(String browserName, String url) {
+
+		BrowserList browser = BrowserList.valueOf(browserName.toUpperCase());
+
+		if (browser == BrowserList.FIREFOX) {
+			WebDriverManager.firefoxdriver().setup();
+			System.setProperty("webdriver.firefox.bin", "/Applications/Firefox.app/Contents/MacOS/firefox");
+			driver = new FirefoxDriver();
+		} else if (browser == BrowserList.H_FIREFOX) {
+			FirefoxOptions options = new FirefoxOptions();
+			options.addArguments("--headless");
+			options.addArguments("window-size=1920x1080");
+			WebDriverManager.firefoxdriver().setup();
+			System.setProperty("webdriver.firefox.bin", "/Applications/Firefox.app/Contents/MacOS/firefox");
+			driver = new FirefoxDriver(options);
+		} else if (browser == BrowserList.CHROME) {
+			WebDriverManager.chromedriver().clearDriverCache().setup();
+			driver = new ChromeDriver();
+		} else if (browser == BrowserList.H_CHROME) {
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--headless");
+			options.addArguments("window-size=1920x1080");
+			WebDriverManager.chromedriver().setup();
+			driver = new ChromeDriver(options);
+		} else if (browser == BrowserList.COC_COC) {
+			WebDriverManager.chromedriver().driverVersion("108.0.5359.71").setup();
+			ChromeOptions options = new ChromeOptions();
+			options.setBinary("/Applications/CocCoc.app/Contents/MacOS/CocCoc");
+			driver = new ChromeDriver(options);
+		} else if (browser == BrowserList.BRAVE) {
+			WebDriverManager.chromedriver().driverVersion("108.0.5359.71").setup();
+			ChromeOptions options = new ChromeOptions();
+			options.setBinary("/Applications/Brave Browser.app/Contents/MacOS/Brave Browser");
+			driver = new ChromeDriver(options);
+		} else if (browser == BrowserList.OPERA) {
+			WebDriverManager.operadriver().setup();
+			driver = new OperaDriver();
+		} else if (browser == BrowserList.EDGE) {
+			WebDriverManager.edgedriver().setup();
+			driver = new EdgeDriver();
+		} else if (browser == BrowserList.SAFARI) {
+			WebDriverManager.safaridriver().setup();
+			driver = new SafariDriver();
+		} else {
+			throw new RuntimeException("Invalid browserName");
+		}
+
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+		driver.get(url);
+		return driver;
+	}
+
+	private String getEnvironmentUrl(String environmentName) {
 		String url = null;
 		EnvironmentList environment = EnvironmentList.valueOf(environmentName.toUpperCase());
-		switch(environment) {
+		switch (environment) {
 		case DEV:
 			url = GlobalConstants.USER_PAGE_URL;
 			break;
-		
+
 		case STAGING:
 			url = "";
 			break;
