@@ -23,7 +23,7 @@ import pageObjects.portal.UserProductReviewPageObject;
 import pageObjects.portal.UserRegisterPageObject;
 import pageObjects.portal.UserRewardPointPageObject;
 
-public class Level_08_Switch_Role extends BaseTest{
+public class Level_11_Switch_Role extends BaseTest{
 	private WebDriver driver;
 	private String validUserEmail, firstName, lastName, correctUserPassword, confirmPassword, adminEmail, adminPassword;
 	private UserHomePageObject userHomePage;

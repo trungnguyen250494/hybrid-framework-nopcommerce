@@ -13,7 +13,7 @@ import pageObjects.portal.UserHomePageObject;
 import pageObjects.portal.UserLoginPageObject;
 import pageObjects.portal.UserRegisterPageObject;
 
-public class Level_06_Page_Generator_Manager_II {
+public class Level_09_Page_Generator_Manager_II {
 	private WebDriver driver;
 
 	private String projectPath = System.getProperty("user.dir");

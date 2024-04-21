@@ -17,7 +17,7 @@ import pageObjects.portal.UserHomePageObject;
 import pageObjects.portal.UserLoginPageObject;
 import pageObjects.portal.UserRegisterPageObject;
 
-public class Level_06_Page_Generator_Manager_III extends BaseTest{
+public class Level_09_Page_Generator_Manager_III extends BaseTest{
 	private WebDriver driver;
 	private String validEmail, firstName, lastName, correctPassword, confirmPassword, invalidEmail, notFoundEmail, incorrectPassword;
 	private UserHomePageObject homePage;

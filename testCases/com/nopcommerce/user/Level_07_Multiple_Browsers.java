@@ -11,7 +11,7 @@ import commons.BaseTest;
 import pageObjects.portal.UserHomePageObject;
 import pageObjects.portal.UserRegisterPageObject;
 
-public class Level_04_Multiple_Browsers extends BaseTest{
+public class Level_07_Multiple_Browsers extends BaseTest{
 	private WebDriver driver;
 	private String firstName,lastName,password,confirmPassword;
 	private UserHomePageObject homePage;

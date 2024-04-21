@@ -18,7 +18,7 @@ import net.bytebuddy.agent.builder.AgentBuilder.ClassFileBufferStrategy;
 import pageObjects.portal.UserHomePageObject;
 import pageObjects.portal.UserRegisterPageObject;
 
-public class Level_03_Page_Object_01_Register {
+public class Level_05_Page_Object_01_Register {
 	private WebDriver driver;
 
 	private String projectPath = System.getProperty("user.dir");

@@ -20,7 +20,7 @@ import pageObjects.portal.UserProductReviewPageObject;
 import pageObjects.portal.UserRegisterPageObject;
 import pageObjects.portal.UserRewardPointPageObject;
 
-public class Level_09_Global_Constant_Dynamic_Locator extends BaseTest{
+public class Level_10_Switch_Page extends BaseTest {
 	private WebDriver driver;
 	private String validEmail, firstName, lastName, correctPassword, confirmPassword, invalidEmail, notFoundEmail, incorrectPassword;
 	private UserHomePageObject homePage;
@@ -30,12 +30,11 @@ public class Level_09_Global_Constant_Dynamic_Locator extends BaseTest{
 	private UserAddressPageObject addressPage;
 	private UserProductReviewPageObject productReviewPage;
 	private UserRewardPointPageObject rewardPointPage;
-	
 
-	@Parameters({"browser","environment"})
+	@Parameters({ "browser", "environment" })
 	@BeforeClass
 	public void beforeClass(String browserName, String environmentName) {
-		driver = getBrowserDriver(browserName,environmentName);
+		driver = getBrowserDriver(browserName, environmentName);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 
 		firstName = "Tester";
@@ -70,7 +69,6 @@ public class Level_09_Global_Constant_Dynamic_Locator extends BaseTest{
 		homePage = new UserHomePageObject(driver);
 		Assert.assertTrue(homePage.isLogoutLinkDisplayed());
 		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
-		
 	}
 
 	@Test
@@ -82,29 +80,13 @@ public class Level_09_Global_Constant_Dynamic_Locator extends BaseTest{
 	}
 
 	@Test
-	public void User_04_Dynamic_Page() {
-		addressPage = (UserAddressPageObject) customerInfoPage.openDynamicSideBar("Addresses");
-		productReviewPage = (UserProductReviewPageObject) addressPage.openDynamicSideBar("My product reviews");
-		rewardPointPage = (UserRewardPointPageObject) productReviewPage.openDynamicSideBar("Reward points");
-		customerInfoPage = (UserCustomerPageObject) rewardPointPage.openDynamicSideBar("Customer info");
+	public void User_04_Switch_Page() {
+		addressPage = customerInfoPage.openAddressPage();
+		productReviewPage = addressPage.openProductReviewPage();
+		rewardPointPage = productReviewPage.openRewardPointPage();
+		customerInfoPage = rewardPointPage.openCustomerInfoPage();
 		Assert.assertTrue(customerInfoPage.isNewsLetterChecked());
-
 	}
-	
-	@Test
-	public void User_05_Dynamic_Page_2() {
-		customerInfoPage.openDynamicSideBarByName("Addresses");
-		addressPage = PageGeneratorManager.getUserAddressPage(driver);
-		addressPage.openDynamicSideBarByName("My product reviews");
-		productReviewPage = PageGeneratorManager.getUserProductReviewPage(driver);
-		productReviewPage.openDynamicSideBarByName("Customer info");
-		customerInfoPage = PageGeneratorManager.getUserCustomerInfoPage(driver);
-
-		Assert.assertTrue(customerInfoPage.isNewsLetterChecked());
-
-	}
-
-	
 
 	public int getRandomNumber() {
 		Random rd = new Random();

@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 
 import commons.BasePage;
 
-public class Level_02_Apply_BasePage_III extends BasePage{
+public class Level_04_Apply_BasePage_III extends BasePage{
 	WebDriver driver;
 
 	String projectPath = System.getProperty("user.dir");
