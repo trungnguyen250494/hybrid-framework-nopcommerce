@@ -22,6 +22,7 @@ import pageObjects.portal.UserCustomerPageObject;
 import pageObjects.portal.UserHomePageObject;
 import pageObjects.portal.UserProductReviewPageObject;
 import pageObjects.portal.UserRewardPointPageObject;
+import pageUIs.jquery.UploadPageUI;
 import pageUIs.user.BasePageUI;
 import pageUIs.user.HomePageUI;
 
@@ -167,6 +168,10 @@ public class BasePage {
 
 	protected void clickToElement(WebDriver driver, String locatorType) {
 		getWebElement(driver, locatorType).click();
+	}
+	
+	protected void clickToElement(WebDriver driver, WebElement element) {
+		element.click();
 	}
 
 	protected void clickToElement(WebDriver driver, String locatorType, String...restParams) {
@@ -438,6 +443,11 @@ public class BasePage {
 		explicitWait.until(ExpectedConditions.elementToBeClickable(getByLocator(elementsLocator)));
 	}
 	
+	protected void waitForElementClickable(WebDriver driver, WebElement element) {
+		WebDriverWait explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
+		explicitWait.until(ExpectedConditions.elementToBeClickable(element));
+	}
+	
 	protected void waitForElementClickable(WebDriver driver, String elementsLocator, String...restParams) {
 		WebDriverWait explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		explicitWait.until(ExpectedConditions.elementToBeClickable(getByLocator(getDynamicXpath(elementsLocator, restParams))));
@@ -481,6 +491,24 @@ public class BasePage {
 		clickToElement(driver, BasePageUI.LOGOUT_LINK_AT_ADMIN);
 		return PageGeneratorManager.getAdminLoginPage(driver);
 		
+	}
+	
+	public void uploadMultipleFiles(WebDriver driver, String... fileNames) {
+		String filePath = System.getProperty("user.dir") + getDirectorySlash("uploadFiles");
+		String fullFileName = "";
+		
+		for (String file : fileNames) {
+			fullFileName = fullFileName + filePath + file + "\n";
+		}
+		
+		fullFileName = fullFileName.trim();
+		
+		getWebElement(driver, UploadPageUI.UPLOAD_FILE_TYPE).sendKeys(fullFileName);
+	}
+	
+	public String getDirectorySlash(String folderName) {
+		String separator = System.getProperty("file.separator");
+		return separator + folderName + separator;
 	}
 	
 }
