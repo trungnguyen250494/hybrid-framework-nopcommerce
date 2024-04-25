@@ -21,7 +21,6 @@
 	<classpathentry kind="lib" path="libWebDriverManager/jcl-over-slf4j-1.7.30.jar"/>
 	<classpathentry kind="lib" path="/Users/trungtn/Downloads/jar_files/commons-io-2.15.1.jar"/>
 	<classpathentry kind="lib" path="/Users/trungtn/Downloads/jar_files/docker-java-transport-httpclient5-3.3.5.jar"/>
-	<classpathentry kind="lib" path="/Users/trungtn/Downloads/jar_files/webdrivermanager-5.7.0.jar"/>
 	<classpathentry kind="lib" path="/Users/trungtn/Downloads/jar_files/commons-compress-1.26.0.jar"/>
 	<classpathentry kind="lib" path="/Users/trungtn/Downloads/jar_files/jcl-over-slf4j-1.7.30.jar"/>
 	<classpathentry kind="lib" path="/Users/trungtn/Downloads/jar_files/bcutil-jdk18on-1.76.jar"/>
@@ -45,5 +44,6 @@
 	<classpathentry kind="lib" path="/Users/trungtn/Downloads/jar_files/jna-5.13.0.jar"/>
 	<classpathentry kind="lib" path="javaTester/libAssertJ/assertj-core-3.24.2.jar"/>
 	<classpathentry kind="lib" path="javaTester/libAssertJ/byte-buddy-1.12.21.jar"/>
+	<classpathentry kind="lib" path="libWebDriverManager/webdrivermanager-5.7.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

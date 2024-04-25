@@ -10,6 +10,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.testng.Assert;
+import org.testng.Reporter;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -137,5 +139,42 @@ public class BaseTest {
 			break;
 		}
 		return url;
+	}
+	
+	protected boolean verifyTrue(boolean condition) {
+		boolean pass = true;
+		try {
+			Assert.assertTrue(condition);
+		} catch (Throwable e) {
+			pass = false;
+
+			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+			Reporter.getCurrentTestResult().setThrowable(e);
+		}
+		return pass;
+	}
+
+	protected boolean verifyFalse(boolean condition) {
+		boolean pass = true;
+		try {
+			Assert.assertFalse(condition);
+		} catch (Throwable e) {
+			pass = false;
+			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+			Reporter.getCurrentTestResult().setThrowable(e);
+		}
+		return pass;
+	}
+
+	protected boolean verifyEquals(Object actual, Object expected) {
+		boolean pass = true;
+		try {
+			Assert.assertEquals(actual, expected);
+		} catch (Throwable e) {
+			pass = false;
+			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+			Reporter.getCurrentTestResult().setThrowable(e);
+		}
+		return pass;
 	}
 }
