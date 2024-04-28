@@ -1,9 +1,8 @@
-package com.nopcommerce.user;
+package com.nopcommerce.account;
 
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -20,21 +19,17 @@ import pageObjects.portal.UserProductReviewPageObject;
 import pageObjects.portal.UserRegisterPageObject;
 import pageObjects.portal.UserRewardPointPageObject;
 
-public class Level_10_Switch_Page extends BaseTest {
+public class Level_16_Log extends BaseTest{
 	private WebDriver driver;
 	private String validEmail, firstName, lastName, correctPassword, confirmPassword, invalidEmail, notFoundEmail, incorrectPassword;
 	private UserHomePageObject homePage;
-	private UserLoginPageObject loginPage;
 	private UserRegisterPageObject registerPage;
-	private UserCustomerPageObject customerInfoPage;
-	private UserAddressPageObject addressPage;
-	private UserProductReviewPageObject productReviewPage;
-	private UserRewardPointPageObject rewardPointPage;
 
-	@Parameters({ "browser", "environment" })
+	
+	@Parameters({"browser","environment"})
 	@BeforeClass
 	public void beforeClass(String browserName, String environmentName) {
-		driver = getBrowserDriver(browserName, environmentName);
+		driver = getBrowserDriver(browserName,environmentName);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 
 		firstName = "Tester";
@@ -50,44 +45,45 @@ public class Level_10_Switch_Page extends BaseTest {
 
 	@Test
 	public void User_01_Register() {
+		log.info("User 01 - Step 01: Verify Register link is displayed.");
+		verifyFalse(homePage.isRegisterLinkDisplayed());
+		
+		log.info("User 01 - Step 02: Click to Register link.");
 		registerPage = homePage.clickToRegisterLink();
-		registerPage.inputToFirstNameTextbox(firstName);
-		registerPage.inputToLasttNameTextbox(lastName);
-		registerPage.inputToEmailTextbox(validEmail);
-		registerPage.inputToPasswordTextbox(correctPassword);
-		registerPage.inputToConfirmPasswordTextbox(confirmPassword);
+		
+		log.info("User 01 - Step 03: Click to Register button.");
 		registerPage.clickToRegisterButton();
-		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
+		registerPage.waitInSecond(5);
+		
+		log.info("User 01 - Step 04: Verify error message - First Name is displayed.");
+		verifyEquals(registerPage.getErrorMessageAtFirstNameTextbox(), "First name is required.");
+		
+		log.info("User 01 - Step 05: Verify error message - Last Name is displayed.");
+		verifyEquals(registerPage.getErrorMessageAtLastNameTextbox(), "Last name is required");
+		
+		log.info("User 01 - Step 06: Enter to First Name textbox with value is " + firstName);
+		registerPage.inputToFirstNameTextbox(firstName);
+		
+		log.info("User 01 - Step 07: Enter to Last Name textbox with value is " + lastName);
+		registerPage.inputToLasttNameTextbox(lastName);
+		
+		log.info("User 01 - Step 08: Enter to Email textbox with value is " + validEmail);
+		registerPage.inputToEmailTextbox(validEmail);
+		
+		log.info("User 01 - Step 09: Enter to Password textbox with value is " + correctPassword);
+		registerPage.inputToPasswordTextbox(correctPassword);
+		
+		log.info("User 01 - Step 10: Enter to Confirm Password textbox with value is " + confirmPassword);
+		registerPage.inputToConfirmPasswordTextbox(confirmPassword);
+		
+		log.info("User 01 - Step 11: Click to Register button.");
+		registerPage.clickToRegisterButton();
+		
+		log.info("User 01 - Step 12: Verify Register completed.");
+		verifyEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed.");
+		
 	}
-
-	@Test
-	public void User_02_Login() {
-		loginPage = homePage.clickToLoginLink();
-		loginPage.inputToEmail(validEmail);
-		loginPage.inputToPassword(correctPassword);
-		loginPage.clickToLoginButton();
-		homePage = new UserHomePageObject(driver);
-		Assert.assertTrue(homePage.isLogoutLinkDisplayed());
-		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
-	}
-
-	@Test
-	public void User_03_My_Account() {
-		customerInfoPage = homePage.clickToMyAccountLink();
-		Assert.assertTrue(customerInfoPage.isDisplayed());
-		customerInfoPage.uncheckNewsLetter();
-		Assert.assertFalse(customerInfoPage.isNewsLetterChecked());
-	}
-
-	@Test
-	public void User_04_Switch_Page() {
-		addressPage = customerInfoPage.openAddressPage();
-		productReviewPage = addressPage.openProductReviewPage();
-		rewardPointPage = productReviewPage.openRewardPointPage();
-		customerInfoPage = rewardPointPage.openCustomerInfoPage();
-		Assert.assertTrue(customerInfoPage.isNewsLetterChecked());
-	}
-
+	
 	public int getRandomNumber() {
 		Random rd = new Random();
 		return rd.nextInt(1000);

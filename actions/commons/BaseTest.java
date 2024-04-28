@@ -2,6 +2,8 @@ package commons;
 
 import java.util.concurrent.TimeUnit;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -17,6 +19,11 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
 	private WebDriver driver;
+	protected final Logger log;
+	
+	public BaseTest() {
+		log = LogManager.getLogger(getClass());
+	}
 
 	protected WebDriver getBrowserDriver(String browserName, String environmentName) {
 
@@ -145,7 +152,9 @@ public class BaseTest {
 		boolean pass = true;
 		try {
 			Assert.assertTrue(condition);
+			log.info("--------------- PASSED ------------------");
 		} catch (Throwable e) {
+			log.info("--------------- FAILED ------------------");
 			pass = false;
 
 			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
@@ -158,7 +167,9 @@ public class BaseTest {
 		boolean pass = true;
 		try {
 			Assert.assertFalse(condition);
+			log.info("--------------- PASSED ------------------");
 		} catch (Throwable e) {
+			log.info("--------------- FAILED ------------------");
 			pass = false;
 			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
 			Reporter.getCurrentTestResult().setThrowable(e);
@@ -170,7 +181,9 @@ public class BaseTest {
 		boolean pass = true;
 		try {
 			Assert.assertEquals(actual, expected);
+			log.info("--------------- PASSED ------------------");
 		} catch (Throwable e) {
+			log.info("--------------- FAILED ------------------");
 			pass = false;
 			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
 			Reporter.getCurrentTestResult().setThrowable(e);

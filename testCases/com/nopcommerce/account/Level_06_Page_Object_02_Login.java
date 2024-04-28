@@ -1,4 +1,4 @@
-package com.nopcommerce.user;
+package com.nopcommerce.account;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -7,30 +7,37 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import commons.BaseTest;
-import commons.PageGeneratorManager;
-import pageObjects.portal.UserCustomerPageObject;
 import pageObjects.portal.UserHomePageObject;
 import pageObjects.portal.UserLoginPageObject;
 import pageObjects.portal.UserRegisterPageObject;
 
-public class Level_09_Page_Generator_Manager_III extends BaseTest{
+public class Level_06_Page_Object_02_Login {
 	private WebDriver driver;
+
+	private String projectPath = System.getProperty("user.dir");
+	private String osName = System.getProperty("os.name");
 	private String validEmail, firstName, lastName, correctPassword, confirmPassword, invalidEmail, notFoundEmail, incorrectPassword;
+	private long timeout = 30;
 	private UserHomePageObject homePage;
 	private UserLoginPageObject loginPage;
 	private UserRegisterPageObject registerPage;
-	private UserCustomerPageObject myAccountPage;
-	
 
-	@Parameters({"browser","environment"})
 	@BeforeClass
-	public void beforeClass(String browserName, String environmentName) {
-		driver = getBrowserDriver(browserName,environmentName);
-		homePage = PageGeneratorManager.getUserHomePage(driver);
+	public void beforeClass() {
+		if (osName.contains("Mac OS")) {
+			System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver");
+		} else {
+			System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
+		}
+
+		driver = new FirefoxDriver();
+		driver.manage().timeouts().implicitlyWait(timeout, TimeUnit.SECONDS);
+		driver.manage().window().maximize();
+
+		driver.get("https://demo.nopcommerce.com/");
+		homePage = new UserHomePageObject(driver);
 
 		firstName = "Tester";
 		lastName = "Tester";
@@ -41,9 +48,10 @@ public class Level_09_Page_Generator_Manager_III extends BaseTest{
 		invalidEmail = "tester@yopmail.com@123";
 		notFoundEmail = "testerHello@yopmail.com";
 
-		System.out.println("Pre-condition - Step 01: Click to the Register link");	
+		System.out.println("Pre-condition - Step 01: Click to the Register link");
+		homePage.clickToRegisterLink();
 
-		registerPage = homePage.clickToRegisterLink();
+		registerPage = new UserRegisterPageObject(driver);
 
 		System.out.println("Pre-condition - Step 02: Input all fields value");
 		registerPage.inputToFirstNameTextbox(firstName);
@@ -63,9 +71,10 @@ public class Level_09_Page_Generator_Manager_III extends BaseTest{
 	@Test
 	public void Login_01_Login_Empty_Data() {
 
+		loginPage = new UserLoginPageObject(driver);
 		System.out.println("Login_01 - Step 01: Click to the Login link");
 
-		loginPage = homePage.clickToLoginLink();
+		homePage.clickToLoginLink();
 
 		System.out.println("Login_01 - Step 02: Click to the Login button");
 
@@ -79,9 +88,10 @@ public class Level_09_Page_Generator_Manager_III extends BaseTest{
 	@Test
 	public void Login_02_Login_Invalid_Email() {
 
+		loginPage = new UserLoginPageObject(driver);
 		System.out.println("Login_02 - Step 01: Click to the Login link");
 
-		loginPage = homePage.clickToLoginLink();
+		homePage.clickToLoginLink();
 
 		System.out.println("Login_02 - Step 02: Input invalid email");
 
@@ -97,9 +107,10 @@ public class Level_09_Page_Generator_Manager_III extends BaseTest{
 	@Test
 	public void Login_03_Login_NotFound_Email() {
 
+		loginPage = new UserLoginPageObject(driver);
 		System.out.println("Login_03 - Step 01: Click to the Login link");
 
-		loginPage = homePage.clickToLoginLink();
+		homePage.clickToLoginLink();
 
 		System.out.println("Login_03 - Step 02: Input Not Found email");
 		loginPage.inputToEmail(notFoundEmail);
@@ -114,9 +125,10 @@ public class Level_09_Page_Generator_Manager_III extends BaseTest{
 	@Test
 	public void Login_04_Existing_Email_Empty_Password() {
 
+		loginPage = new UserLoginPageObject(driver);
 		System.out.println("Login_04 - Step 01: Click to the Login link");
 
-		loginPage = homePage.clickToLoginLink();
+		homePage.clickToLoginLink();
 
 		System.out.println("Login_04 - Step 02: Input existing email");
 		loginPage.inputToEmail(validEmail);
@@ -131,9 +143,10 @@ public class Level_09_Page_Generator_Manager_III extends BaseTest{
 	@Test
 	public void Login_05_Existing_Email_Incorrect_Password() {
 
+		loginPage = new UserLoginPageObject(driver);
 		System.out.println("Login_05 - Step 01: Click to the Login link");
 
-		loginPage = homePage.clickToLoginLink();
+		homePage.clickToLoginLink();
 
 		System.out.println("Login_05 - Step 02: Input existing email");
 		loginPage.inputToEmail(validEmail);
@@ -151,9 +164,10 @@ public class Level_09_Page_Generator_Manager_III extends BaseTest{
 	@Test
 	public void Login_06_Login_Success() {
 
+		loginPage = new UserLoginPageObject(driver);
 		System.out.println("Login_06 - Step 01: Click to the Login link");
 
-		loginPage = homePage.clickToLoginLink();
+		homePage.clickToLoginLink();
 
 		System.out.println("Login_06 - Step 02: Input existing email");
 		loginPage.inputToEmail(validEmail);
@@ -169,8 +183,6 @@ public class Level_09_Page_Generator_Manager_III extends BaseTest{
 		homePage = new UserHomePageObject(driver);
 		Assert.assertTrue(homePage.isLogoutLinkDisplayed());
 		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
-		
-		myAccountPage = homePage.clickToMyAccountLink();
 	}
 
 	public int getRandomNumber() {

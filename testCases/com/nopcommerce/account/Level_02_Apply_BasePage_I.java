@@ -1,3 +1,4 @@
+package com.nopcommerce.account;
 /*
  * package com.nopcommerce.user;
  * 

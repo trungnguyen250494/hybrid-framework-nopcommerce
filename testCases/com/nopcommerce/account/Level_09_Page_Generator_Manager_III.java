@@ -1,4 +1,4 @@
-package com.nopcommerce.user;
+package com.nopcommerce.account;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -7,37 +7,30 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import commons.BaseTest;
+import commons.PageGeneratorManager;
+import pageObjects.portal.UserCustomerPageObject;
 import pageObjects.portal.UserHomePageObject;
 import pageObjects.portal.UserLoginPageObject;
 import pageObjects.portal.UserRegisterPageObject;
 
-public class Level_09_Page_Generator_Manager_II {
+public class Level_09_Page_Generator_Manager_III extends BaseTest{
 	private WebDriver driver;
-
-	private String projectPath = System.getProperty("user.dir");
-	private String osName = System.getProperty("os.name");
 	private String validEmail, firstName, lastName, correctPassword, confirmPassword, invalidEmail, notFoundEmail, incorrectPassword;
-	private long timeout = 30;
 	private UserHomePageObject homePage;
 	private UserLoginPageObject loginPage;
 	private UserRegisterPageObject registerPage;
+	private UserCustomerPageObject myAccountPage;
+	
 
+	@Parameters({"browser","environment"})
 	@BeforeClass
-	public void beforeClass() {
-		if (osName.contains("Mac OS")) {
-			System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver");
-		} else {
-			System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
-		}
-
-		driver = new FirefoxDriver();
-		driver.manage().timeouts().implicitlyWait(timeout, TimeUnit.SECONDS);
-		driver.manage().window().maximize();
-
-		driver.get("https://demo.nopcommerce.com/");
-		homePage = new UserHomePageObject(driver);
+	public void beforeClass(String browserName, String environmentName) {
+		driver = getBrowserDriver(browserName,environmentName);
+		homePage = PageGeneratorManager.getUserHomePage(driver);
 
 		firstName = "Tester";
 		lastName = "Tester";
@@ -176,6 +169,8 @@ public class Level_09_Page_Generator_Manager_II {
 		homePage = new UserHomePageObject(driver);
 		Assert.assertTrue(homePage.isLogoutLinkDisplayed());
 		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
+		
+		myAccountPage = homePage.clickToMyAccountLink();
 	}
 
 	public int getRandomNumber() {

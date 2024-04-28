@@ -1,0 +1,16 @@
+[2024-04-28 10:30:40,387 INFO com.nopcommerce.account.Level_16_Log] - User 01 - Step 01: Verify Register link is displayed.
+[2024-04-28 10:30:48,093 INFO com.nopcommerce.account.Level_16_Log] - --------------- FAILED ------------------
+[2024-04-28 10:30:48,095 INFO com.nopcommerce.account.Level_16_Log] - User 01 - Step 02: Click to Register link.
+[2024-04-28 10:30:52,239 INFO com.nopcommerce.account.Level_16_Log] - User 01 - Step 03: Click to Register button.
+[2024-04-28 10:31:00,944 INFO com.nopcommerce.account.Level_16_Log] - User 01 - Step 04: Verify error message - First Name is displayed.
+[2024-04-28 10:31:01,200 INFO com.nopcommerce.account.Level_16_Log] - --------------- PASSED ------------------
+[2024-04-28 10:31:01,201 INFO com.nopcommerce.account.Level_16_Log] - User 01 - Step 05: Verify error message - Last Name is displayed.
+[2024-04-28 10:31:01,616 INFO com.nopcommerce.account.Level_16_Log] - --------------- FAILED ------------------
+[2024-04-28 10:31:01,616 INFO com.nopcommerce.account.Level_16_Log] - User 01 - Step 06: Enter to First Name textbox with value is Tester
+[2024-04-28 10:31:03,284 INFO com.nopcommerce.account.Level_16_Log] - User 01 - Step 07: Enter to Last Name textbox with value is Tester
+[2024-04-28 10:31:04,206 INFO com.nopcommerce.account.Level_16_Log] - User 01 - Step 08: Enter to Email textbox with value is tester683@yopmail.com
+[2024-04-28 10:31:04,700 INFO com.nopcommerce.account.Level_16_Log] - User 01 - Step 09: Enter to Password textbox with value is Tester@123
+[2024-04-28 10:31:05,212 INFO com.nopcommerce.account.Level_16_Log] - User 01 - Step 10: Enter to Confirm Password textbox with value is Tester@123
+[2024-04-28 10:31:05,568 INFO com.nopcommerce.account.Level_16_Log] - User 01 - Step 11: Click to Register button.
+[2024-04-28 10:31:09,903 INFO com.nopcommerce.account.Level_16_Log] - User 01 - Step 12: Verify Register completed.
+[2024-04-28 10:31:11,526 INFO com.nopcommerce.account.Level_16_Log] - --------------- FAILED ------------------
