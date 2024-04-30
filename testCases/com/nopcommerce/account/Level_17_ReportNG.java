@@ -19,7 +19,7 @@ import pageObjects.portal.UserProductReviewPageObject;
 import pageObjects.portal.UserRegisterPageObject;
 import pageObjects.portal.UserRewardPointPageObject;
 
-public class Level_16_Log extends BaseTest{
+public class Level_17_ReportNG extends BaseTest{
 	private WebDriver driver;
 	private String validEmail, firstName, lastName, correctPassword, confirmPassword, invalidEmail, notFoundEmail, incorrectPassword;
 	private UserHomePageObject homePage;
@@ -84,7 +84,7 @@ public class Level_16_Log extends BaseTest{
 		registerPage.clickToRegisterButton();
 		
 		log.info("User 01 - Step 07: Verify Register completed.");
-		verifyEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
+		verifyEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed.");
 	}
 	
 	public int getRandomNumber() {

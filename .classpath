@@ -45,5 +45,11 @@
 	<classpathentry kind="lib" path="libWebDriverManager/webdrivermanager-5.7.0.jar"/>
 	<classpathentry kind="lib" path="Log4J 2.19/log4j-api-2.19.0.jar"/>
 	<classpathentry kind="lib" path="Log4J 2.19/log4j-core-2.19.0.jar"/>
+	<classpathentry kind="lib" path="ReportNG 1.1.4/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="ReportNG 1.1.4/commons-io-2.6.jar"/>
+	<classpathentry kind="lib" path="ReportNG 1.1.4/guice-3.0.jar"/>
+	<classpathentry kind="lib" path="ReportNG 1.1.4/reportng-1.1.4.jar"/>
+	<classpathentry kind="lib" path="ReportNG 1.1.4/reportng-1.1.4-sources.jar"/>
+	<classpathentry kind="lib" path="ReportNG 1.1.4/velocity-1.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
