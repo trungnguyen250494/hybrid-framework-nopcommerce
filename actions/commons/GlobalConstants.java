@@ -16,5 +16,8 @@ public class GlobalConstants {
 	public static final String DB_DEV_USER = "";
 	public static final String DB_DEV_PASS = "";
 	public static final int LONG_TIMEOUT = 30;
+	public static final String EXTENT_PATH_V2 = PROJECT_PATH + File.separator + "extentReport" + File.separator + "ExtentReportV2.html";
+	public static final String EXTENT_PATH_V5 = PROJECT_PATH + File.separator + "extentReport" + File.separator + "ExtentReportV5.html";
+	public static final String JAVA_VERSION = System.getProperty("java.version");
 
 }

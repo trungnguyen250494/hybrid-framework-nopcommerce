@@ -69,7 +69,7 @@ public class Level_17_ReportNG extends BaseTest{
 		registerPage.inputToFirstNameTextbox(firstName);
 		
 		log.info("User 01 - Step 02: Enter to Last Name textbox with value is " + lastName);
-		registerPage.inputToLasttNameTextbox(lastName);
+		registerPage.inputToLastNameTextbox(lastName);
 		
 		log.info("User 01 - Step 03: Enter to Email textbox with value is " + validEmail);
 		registerPage.inputToEmailTextbox(validEmail);

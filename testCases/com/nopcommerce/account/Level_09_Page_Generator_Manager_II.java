@@ -54,7 +54,7 @@ public class Level_09_Page_Generator_Manager_II {
 
 		System.out.println("Pre-condition - Step 02: Input all fields value");
 		registerPage.inputToFirstNameTextbox(firstName);
-		registerPage.inputToLasttNameTextbox(lastName);
+		registerPage.inputToLastNameTextbox(lastName);
 		registerPage.inputToEmailTextbox(validEmail);
 		registerPage.inputToPasswordTextbox(correctPassword);
 		registerPage.inputToConfirmPasswordTextbox(confirmPassword);

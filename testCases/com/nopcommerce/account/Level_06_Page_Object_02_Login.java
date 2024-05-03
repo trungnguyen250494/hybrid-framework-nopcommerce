@@ -55,7 +55,7 @@ public class Level_06_Page_Object_02_Login {
 
 		System.out.println("Pre-condition - Step 02: Input all fields value");
 		registerPage.inputToFirstNameTextbox(firstName);
-		registerPage.inputToLasttNameTextbox(lastName);
+		registerPage.inputToLastNameTextbox(lastName);
 		registerPage.inputToEmailTextbox(validEmail);
 		registerPage.inputToPasswordTextbox(correctPassword);
 		registerPage.inputToConfirmPasswordTextbox(confirmPassword);

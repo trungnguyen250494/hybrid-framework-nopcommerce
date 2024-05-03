@@ -54,7 +54,7 @@ public class Level_15_Assert_Verify extends BaseTest{
 		verifyEquals(registerPage.getErrorMessageAtLastNameTextbox(), "Last name is required");
 		
 		registerPage.inputToFirstNameTextbox(firstName);
-		registerPage.inputToLasttNameTextbox(lastName);
+		registerPage.inputToLastNameTextbox(lastName);
 		registerPage.inputToEmailTextbox(validEmail);
 		registerPage.inputToPasswordTextbox(correctPassword);
 		registerPage.inputToConfirmPasswordTextbox(confirmPassword);

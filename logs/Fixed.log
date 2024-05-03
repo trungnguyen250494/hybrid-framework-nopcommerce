@@ -197,3 +197,35 @@
 [30-04-2024 17:54:38.338 INFO com.nopcommerce.account.Level_17_ReportNG] - User 01 - Step 06: Click to Register button.
 [30-04-2024 17:54:43.424 INFO com.nopcommerce.account.Level_17_ReportNG] - User 01 - Step 07: Verify Register completed.
 [30-04-2024 17:54:44.978 INFO com.nopcommerce.account.Level_17_ReportNG] - --------------- FAILED ------------------
+[02-05-2024 15:18:24.023 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - User 01 - Step 01: Verify Register link is displayed.
+[02-05-2024 15:18:24.197 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - --------------- FAILED ------------------
+[02-05-2024 15:18:24.197 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - User 01 - Step 02: Click to Register link.
+[02-05-2024 15:18:25.214 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - User 01 - Step 03: Click to Register button.
+[02-05-2024 15:18:30.607 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - User 01 - Step 04: Verify error message - First Name is displayed.
+[02-05-2024 15:18:30.676 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - --------------- PASSED ------------------
+[02-05-2024 15:18:30.676 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - User 01 - Step 05: Verify error message - Last Name is displayed.
+[02-05-2024 15:18:30.714 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - --------------- FAILED ------------------
+[02-05-2024 15:18:30.718 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - User 01 - Step 01: Enter to First Name textbox with value is Tester
+[02-05-2024 15:18:32.042 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - User 01 - Step 02: Enter to Last Name textbox with value is Tester
+[02-05-2024 15:18:32.146 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - User 01 - Step 03: Enter to Email textbox with value is tester637@yopmail.com
+[02-05-2024 15:18:32.193 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - User 01 - Step 04: Enter to Password textbox with value is Tester@123
+[02-05-2024 15:18:32.232 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - User 01 - Step 05: Enter to Confirm Password textbox with value is Tester@123
+[02-05-2024 15:18:32.266 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - User 01 - Step 06: Click to Register button.
+[02-05-2024 15:18:33.447 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - User 01 - Step 07: Verify Register completed.
+[02-05-2024 15:18:33.558 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - --------------- FAILED ------------------
+[02-05-2024 15:18:45.030 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - User 01 - Step 01: Verify Register link is displayed.
+[02-05-2024 15:18:53.827 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - --------------- FAILED ------------------
+[02-05-2024 15:18:53.827 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - User 01 - Step 02: Click to Register link.
+[02-05-2024 15:18:55.675 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - User 01 - Step 03: Click to Register button.
+[02-05-2024 15:19:02.890 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - User 01 - Step 04: Verify error message - First Name is displayed.
+[02-05-2024 15:19:03.120 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - --------------- PASSED ------------------
+[02-05-2024 15:19:03.121 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - User 01 - Step 05: Verify error message - Last Name is displayed.
+[02-05-2024 15:19:03.421 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - --------------- FAILED ------------------
+[02-05-2024 15:19:03.425 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - User 01 - Step 01: Enter to First Name textbox with value is Tester
+[02-05-2024 15:19:06.214 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - User 01 - Step 02: Enter to Last Name textbox with value is Tester
+[02-05-2024 15:19:06.904 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - User 01 - Step 03: Enter to Email textbox with value is tester842@yopmail.com
+[02-05-2024 15:19:07.305 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - User 01 - Step 04: Enter to Password textbox with value is Tester@123
+[02-05-2024 15:19:07.462 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - User 01 - Step 05: Enter to Confirm Password textbox with value is Tester@123
+[02-05-2024 15:19:07.729 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - User 01 - Step 06: Click to Register button.
+[02-05-2024 15:19:13.723 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - User 01 - Step 07: Verify Register completed.
+[02-05-2024 15:19:14.042 INFO com.nopcommerce.account.Level_18_ExtentReportV2] - --------------- FAILED ------------------

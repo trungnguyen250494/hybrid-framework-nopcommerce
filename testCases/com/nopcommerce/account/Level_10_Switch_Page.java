@@ -52,7 +52,7 @@ public class Level_10_Switch_Page extends BaseTest {
 	public void User_01_Register() {
 		registerPage = homePage.clickToRegisterLink();
 		registerPage.inputToFirstNameTextbox(firstName);
-		registerPage.inputToLasttNameTextbox(lastName);
+		registerPage.inputToLastNameTextbox(lastName);
 		registerPage.inputToEmailTextbox(validEmail);
 		registerPage.inputToPasswordTextbox(correctPassword);
 		registerPage.inputToConfirmPasswordTextbox(confirmPassword);

@@ -54,7 +54,7 @@ public class Level_11_Switch_Role extends BaseTest{
 	public void TC01_Role_User_Register() {
 		registerPage = userHomePage.clickToRegisterLink();
 		registerPage.inputToFirstNameTextbox(firstName);
-		registerPage.inputToLasttNameTextbox(lastName);
+		registerPage.inputToLastNameTextbox(lastName);
 		registerPage.inputToEmailTextbox(validUserEmail);
 		registerPage.inputToPasswordTextbox(correctUserPassword);
 		registerPage.inputToConfirmPasswordTextbox(confirmPassword);

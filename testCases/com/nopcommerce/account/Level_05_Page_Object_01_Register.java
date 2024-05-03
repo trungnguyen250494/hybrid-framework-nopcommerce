@@ -82,7 +82,7 @@ public class Level_05_Page_Object_01_Register {
 
 		System.out.println("Register_02 - Step 02: Input all fields value");
 		registerPage.inputToFirstNameTextbox(firstName);
-		registerPage.inputToLasttNameTextbox(lastName);
+		registerPage.inputToLastNameTextbox(lastName);
 		registerPage.inputToEmailTextbox("abc#xyz");
 		registerPage.inputToPasswordTextbox(password);
 		registerPage.inputToConfirmPasswordTextbox(confirmPassword);
@@ -104,7 +104,7 @@ public class Level_05_Page_Object_01_Register {
 
 		System.out.println("Register_03 - Step 02: Input all fields value");
 		registerPage.inputToFirstNameTextbox(firstName);
-		registerPage.inputToLasttNameTextbox(lastName);
+		registerPage.inputToLastNameTextbox(lastName);
 		registerPage.inputToEmailTextbox(email);
 		registerPage.inputToPasswordTextbox(password);
 		registerPage.inputToConfirmPasswordTextbox(confirmPassword);
@@ -126,7 +126,7 @@ public class Level_05_Page_Object_01_Register {
 		
 		System.out.println("Register_04 - Step 02: Input all fields value");
 		registerPage.inputToFirstNameTextbox(firstName);
-		registerPage.inputToLasttNameTextbox(lastName);
+		registerPage.inputToLastNameTextbox(lastName);
 		registerPage.inputToEmailTextbox(email);
 		registerPage.inputToPasswordTextbox(password);
 		registerPage.inputToConfirmPasswordTextbox(confirmPassword);
@@ -148,7 +148,7 @@ public class Level_05_Page_Object_01_Register {
 		
 		System.out.println("Register_05 - Step 02: Input all fields value");
 		registerPage.inputToFirstNameTextbox(firstName);
-		registerPage.inputToLasttNameTextbox(lastName);
+		registerPage.inputToLastNameTextbox(lastName);
 		registerPage.inputToEmailTextbox(email);
 		registerPage.inputToPasswordTextbox("Test");
 		registerPage.inputToConfirmPasswordTextbox("Test");
@@ -170,7 +170,7 @@ public class Level_05_Page_Object_01_Register {
 
 		System.out.println("Register_06 - Step 02: Input all fields value");
 		registerPage.inputToFirstNameTextbox(firstName);
-		registerPage.inputToLasttNameTextbox(lastName);
+		registerPage.inputToLastNameTextbox(lastName);
 		registerPage.inputToEmailTextbox(email);
 		registerPage.inputToPasswordTextbox(password);
 		registerPage.inputToConfirmPasswordTextbox("Tester@456");
