@@ -4,18 +4,18 @@
 	<parameter name="environment" value="dev" />
 	<listeners>
 	<listener class-name="commons.MethodListener"></listener>
-	<listener class-name="reportConfig.ExtentTestListener"></listener>
+	<listener class-name="reportConfig.AllureTestListener"></listener>
 	</listeners>
 	<test name="Run on Firefox">
 		<parameter name="browser" value="firefox" />
 		<classes>
-			<class name="com.nopcommerce.account.Level_18_ExtentReportV5" />
+			<class name="com.nopcommerce.account.Level_19_Allure_Report" />
 		</classes>
 	</test>
 	<test name="Run on Chrome">
 		<parameter name="browser" value="chrome" />
 		<classes>
-			<class name="com.nopcommerce.account.Level_18_ExtentReportV5" />
+			<class name="com.nopcommerce.account.Level_19_Allure_Report" />
 		</classes>
 	</test>
 
