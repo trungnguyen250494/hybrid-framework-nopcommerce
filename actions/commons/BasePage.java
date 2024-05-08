@@ -1,7 +1,9 @@
 package commons;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -282,6 +284,26 @@ public class BasePage {
 
 	protected boolean isElementDisplayed(WebDriver driver, String locatorType) {
 		return getWebElement(driver, locatorType).isDisplayed();
+	}
+	
+	protected void setImplicitWait(WebDriver driver, long timeout) {
+		driver.manage().timeouts().implicitlyWait(timeout, TimeUnit.SECONDS);
+	}
+	
+	protected boolean isElementNotDisplayed(WebDriver driver, String locatorType) {
+		setImplicitWait(driver, GlobalConstants.SHORT_TIMEOUT);
+		List <WebElement> elements = getListOfWebElements(driver, locatorType);
+		setImplicitWait(driver, GlobalConstants.LONG_TIMEOUT);
+		
+		if(elements.size() == 0) {
+			return true;
+		}
+		else if(elements.size() > 0 && !elements.get(0).isDisplayed()) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	
 	protected boolean isElementDisplayed(WebDriver driver, String locatorType, String...restParams) {
