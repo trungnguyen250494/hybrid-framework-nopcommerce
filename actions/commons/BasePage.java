@@ -17,16 +17,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import net.bytebuddy.agent.builder.AgentBuilder.CircularityLock.Global;
 import pageObjects.admin.AdminLoginPageObject;
-import pageObjects.portal.UserAddressPageObject;
-import pageObjects.portal.UserCustomerPageObject;
 import pageObjects.portal.UserHomePageObject;
-import pageObjects.portal.UserProductReviewPageObject;
-import pageObjects.portal.UserRewardPointPageObject;
 import pageUIs.jquery.UploadPageUI;
-import pageUIs.user.BasePageUI;
-import pageUIs.user.HomePageUI;
+import pageUIs.user.BaseElementUI;
 
 public class BasePage {
 	
@@ -486,8 +480,8 @@ public class BasePage {
 	}
 	
 	public BasePage openPagesAtMyAccountByName(WebDriver driver, String pageName) {
-		waitForElementClickable(driver, BasePageUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_AREA,pageName);
-		clickToElement(driver, BasePageUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_AREA,pageName);
+		waitForElementClickable(driver, BaseElementUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_AREA,pageName);
+		clickToElement(driver, BaseElementUI.DYNAMIC_PAGE_AT_MY_ACCOUNT_AREA,pageName);
 		switch(pageName) {
 		case "Customer info":
 			return PageGeneratorManager.getUserCustomerInfoPage(driver);
@@ -503,14 +497,14 @@ public class BasePage {
 	}
 	
 	public UserHomePageObject clickToLogoutLinkAtUserPage(WebDriver driver) {
-		waitForElementClickable(driver, BasePageUI.LOGOUT_LINK_AT_USER);
-		clickToElement(driver, BasePageUI.LOGOUT_LINK_AT_USER);
+		waitForElementClickable(driver,BaseElementUI.LOGOUT_LINK_AT_USER);
+		clickToElement(driver, BaseElementUI.LOGOUT_LINK_AT_USER);
 		return PageGeneratorManager.getUserHomePage(driver);
 	}
 	
 	public AdminLoginPageObject clickToLogoutLinkAtAdminPage(WebDriver driver) {
-		waitForElementClickable(driver, BasePageUI.LOGOUT_LINK_AT_ADMIN);
-		clickToElement(driver, BasePageUI.LOGOUT_LINK_AT_ADMIN);
+		waitForElementClickable(driver, BaseElementUI.LOGOUT_LINK_AT_ADMIN);
+		clickToElement(driver, BaseElementUI.LOGOUT_LINK_AT_ADMIN);
 		return PageGeneratorManager.getAdminLoginPage(driver);
 		
 	}

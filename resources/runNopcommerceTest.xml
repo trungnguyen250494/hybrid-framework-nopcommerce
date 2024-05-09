@@ -3,19 +3,23 @@
 <suite name="NopCommerce">
 	<parameter name="environment" value="dev" />
 	<listeners>
+	<!-- 
 	<listener class-name="commons.MethodListener"></listener>
 	<listener class-name="reportConfig.AllureTestListener"></listener>
+	-->
 	</listeners>
+	<!-- 
 	<test name="Run on Firefox">
 		<parameter name="browser" value="firefox" />
 		<classes>
-			<class name="com.nopcommerce.account.Level_19_Allure_Report" />
+			<class name="com.nopcommerce.account.Level_21_Pattern_Object" />
 		</classes>
 	</test>
+	-->
 	<test name="Run on Chrome">
 		<parameter name="browser" value="chrome" />
 		<classes>
-			<class name="com.nopcommerce.account.Level_19_Allure_Report" />
+			<class name="com.nopcommerce.account.Level_21_Pattern_Object" />
 		</classes>
 	</test>
 

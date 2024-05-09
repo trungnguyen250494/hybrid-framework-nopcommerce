@@ -2,16 +2,16 @@ package pageObjects.portal;
 
 import org.openqa.selenium.WebDriver;
 
-import commons.BasePage;
+import commons.BaseElement;
 import commons.PageGeneratorManager;
 import io.qameta.allure.Step;
 import pageUIs.user.LoginPageUI;
-import pageUIs.user.RegisterPageUI;
 
-public class UserLoginPageObject extends BasePage{
+public class UserLoginPageObject extends BaseElement{
 	private WebDriver driver;
 	
 	public UserLoginPageObject (WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 	}
 
@@ -52,6 +52,5 @@ public class UserLoginPageObject extends BasePage{
 		inputToPassword(password);
 		return clickToLoginButton();	
 	}
-	
 
 }
