@@ -16,10 +16,11 @@
 		</classes>
 	</test>
 	-->
-	<test name="Run on Chrome">
+	<test name="Run on Chrome" preserve-order="true">
 		<parameter name="browser" value="chrome" />
 		<classes>
-			<class name="com.nopcommerce.account.Level_21_Pattern_Object" />
+			<class name="com.nopcommerce.cookie.Common_Register" />
+			<class name="com.nopcommerce.cookie.Level_22_Login" />
 		</classes>
 	</test>
 

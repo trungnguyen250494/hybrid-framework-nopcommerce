@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -477,6 +478,16 @@ public class BasePage {
 	protected List<WebElement> waitUntilAllElementsPrecense(WebDriver driver, String elementsLocator) {
 		WebDriverWait explicitWait = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		return explicitWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByLocator(elementsLocator)));
+	}
+	
+	public Set<Cookie> getBrowserCookies(WebDriver driver){
+		return driver.manage().getCookies();
+	}
+	
+	public void setCookies(WebDriver driver, Set<Cookie> cookies) {
+		for(Cookie cookie : cookies) {
+			driver.manage().addCookie(cookie);
+		}
 	}
 	
 	public BasePage openPagesAtMyAccountByName(WebDriver driver, String pageName) {
