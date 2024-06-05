@@ -50,8 +50,8 @@ public class Level_22_Login extends BaseTest {
 		return rd.nextInt(1000);
 	}
 
-	@AfterClass
+	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		driver.quit();
+		//closeBrowserDriver();
 	}
 }

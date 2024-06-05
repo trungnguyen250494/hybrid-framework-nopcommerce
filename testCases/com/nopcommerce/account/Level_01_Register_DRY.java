@@ -1,5 +1,6 @@
 package com.nopcommerce.account;
 
+import java.time.Duration;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -31,7 +32,6 @@ public class Level_01_Register_DRY {
 		}
 
 		driver = new FirefoxDriver();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 
 	}
@@ -122,7 +122,7 @@ public class Level_01_Register_DRY {
 
 		driver.findElement(By.cssSelector("#register-button")).click();
 		
-		WebDriverWait explicitWait = new WebDriverWait(driver, 30);
+		WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		explicitWait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("div.validation-summary-errors li"))));
 
 		Assert.assertEquals(driver.findElement(By.cssSelector("div.validation-summary-errors li")).getText(), "The specified email already exists");

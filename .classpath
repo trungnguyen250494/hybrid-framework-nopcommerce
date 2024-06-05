@@ -21,7 +21,6 @@
 	<classpathentry kind="lib" path="libAllure/bsh-2.0b6.jar"/>
 	<classpathentry kind="lib" path="libAllure/jcommander-1.72.jar"/>
 	<classpathentry kind="lib" path="libAllure/slf4j-api-1.7.36.jar"/>
-	<classpathentry kind="lib" path="libSelenium/selenium-server-standalone-3.141.59.jar"/>
 	<classpathentry kind="lib" path="libSelenium/testng-6.14.3.jar"/>
 	<classpathentry kind="lib" path="libLog4Jver2/log4j-api-2.19.0.jar"/>
 	<classpathentry kind="lib" path="libLog4Jver2/log4j-core-2.19.0.jar"/>
@@ -50,7 +49,6 @@
 	<classpathentry kind="lib" path="libWebDriverManager/docker-java-transport-3.3.5.jar"/>
 	<classpathentry kind="lib" path="libWebDriverManager/docker-java-transport-httpclient5-3.3.5.jar"/>
 	<classpathentry kind="lib" path="libWebDriverManager/gson-2.10.1.jar"/>
-	<classpathentry kind="lib" path="libWebDriverManager/guava-19.0.jar"/>
 	<classpathentry kind="lib" path="libWebDriverManager/httpclient5-5.2.1.jar"/>
 	<classpathentry kind="lib" path="libWebDriverManager/httpcore5-5.2.jar"/>
 	<classpathentry kind="lib" path="libWebDriverManager/httpcore5-h2-5.2.jar"/>
@@ -60,8 +58,11 @@
 	<classpathentry kind="lib" path="libWebDriverManager/jcl-over-slf4j-1.7.30.jar"/>
 	<classpathentry kind="lib" path="libWebDriverManager/jna-5.13.0.jar"/>
 	<classpathentry kind="lib" path="libWebDriverManager/slf4j-api-2.0.12.jar"/>
-	<classpathentry kind="lib" path="libWebDriverManager/webdrivermanager-5.7.0.jar"/>
 	<classpathentry kind="lib" path="libAssertJ/assertj-core-3.24.2.jar"/>
 	<classpathentry kind="lib" path="libAssertJ/byte-buddy-1.12.21.jar"/>
+	<classpathentry kind="lib" path="libSelenium/selenium-server-4.4.0.jar"/>
+	<classpathentry kind="lib" path="libWebDriverManager/webdrivermanager-5.7.0.jar"/>
+	<classpathentry kind="lib" path="libWebDriverManager/guava-33.2.1-jre.jar"/>
+	<classpathentry kind="lib" path="libSelenium/selenium-server-4.21.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
