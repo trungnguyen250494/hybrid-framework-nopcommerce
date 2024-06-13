@@ -10,19 +10,19 @@ import pageUIs.jquery.UploadPageUI;
 
 public class UploadPageObject extends BasePage {
 	WebDriver driver;
-	
+
 	public UploadPageObject(WebDriver driver) {
 		this.driver = driver;
 	}
-	
+
 	public boolean isFileLoadedSuccess(String fileName) {
 		waitUntilElementVisible(driver, UploadPageUI.FILE_LOADED_BY_NAME, fileName);
 		return isElementDisplayed(driver, UploadPageUI.FILE_LOADED_BY_NAME, fileName);
 	}
-	
+
 	public void clickStartButtonOnEachFile() {
 		List<WebElement> startButtonsElements = getListOfWebElements(driver, UploadPageUI.MULTIPLE_START_BUTTON);
-		
+
 		for (WebElement button : startButtonsElements) {
 			waitForElementClickable(driver, button);
 			clickToElement(driver, button);

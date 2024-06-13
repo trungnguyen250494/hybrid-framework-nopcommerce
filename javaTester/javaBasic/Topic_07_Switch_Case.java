@@ -23,11 +23,11 @@ public class Topic_07_Switch_Case {
 		driver.quit();
 
 	}
-	
+
 	@Test
 	public void TC_02() {
 		int month = scanner.nextInt();
-		
+
 		switch (month) {
 			case 1:
 			case 3:
@@ -38,11 +38,11 @@ public class Topic_07_Switch_Case {
 			case 12:
 				System.out.println("Tháng này có 31 ngày");
 				break;
-				
+
 			case 2:
 				System.out.println("Tháng này có 28 hoặc 29 ngày");
 				break;
-				
+
 			case 4:
 			case 6:
 			case 9:
@@ -50,9 +50,9 @@ public class Topic_07_Switch_Case {
 				System.out.println("Tháng này có 30 ngày");
 				break;
 		}
-				
+
 	}
-	
+
 	public WebDriver getDriverByBrowserName(String browserName) {
 		switch (browserName) {
 		case "chrome":
@@ -73,7 +73,7 @@ public class Topic_07_Switch_Case {
 		}
 		return driver;
 	}
-	
+
 	public void setPropertyByOS (String osName, String webbrowserName, String webdriverName) {
 		if (osName.contains("Mac OS")) {
 			System.setProperty("webdriver."+webbrowserName+".driver", projectPath + "/browserDrivers/"+webdriverName);

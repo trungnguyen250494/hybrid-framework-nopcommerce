@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriver;
 import commons.BasePage;
 import commons.PageGeneratorManager;
 import pageUIs.admin.AdminLoginPageUI;
-import pageUIs.user.LoginPageUI;
-import pageUIs.user.RegisterPageUI;
 
 public class AdminLoginPageObject extends BasePage {
 	private WebDriver driver;
@@ -33,7 +31,7 @@ public class AdminLoginPageObject extends BasePage {
 		return PageGeneratorManager.getAdminDashboardPage(driver);
 
 	}
-	
+
 	public AdminDashboardPageObject loginAsAdmin(String email, String password) {
 		inputToUsernameTextbox(email);
 		inputToPasswordTextbox(password);

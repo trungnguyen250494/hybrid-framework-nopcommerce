@@ -8,7 +8,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import commons.GlobalConstants;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Topic_14_Hard_Assert {
@@ -29,14 +28,14 @@ public class Topic_14_Hard_Assert {
 
 		System.out.println("Step 02 - Input to password textbox");
 		driver.findElement(By.id("pass")).sendKeys("");
-		
+
 		System.out.println("Step 03 - Click to Login button");
 		driver.findElement(By.id("send2")).click();
 
 		// First Pass (5)
 		System.out.println("Step 05 - Verify error message displayed");
 		Assert.assertEquals(driver.findElement(By.id("advice-required-entry-pass")).getText(), "This is a required field.");
-		
+
 		//...
 
 		// Second Fail (10)

@@ -12,7 +12,6 @@ public class Topic_02_Debug {
 
 	@Test
 	public void TC_01() {
-		// TODO Auto-generated method stub
 		System.setProperty("webdriver.chrome.driver", projectPath + "/browserDrivers/chromedriver");
 
 		driver = new ChromeDriver();

@@ -5,8 +5,8 @@ public class Topic_03_Getter_Setter {
 	private String carType;
 	private String carColor;
 	private String carMachine;
-	
-	
+
+
 	public String getCarName() {
 		return carName;
 	}
@@ -31,7 +31,7 @@ public class Topic_03_Getter_Setter {
 	public void setCarMachine(String carMachine) {
 		this.carMachine = carMachine;
 	}
-	
+
 
 
 }

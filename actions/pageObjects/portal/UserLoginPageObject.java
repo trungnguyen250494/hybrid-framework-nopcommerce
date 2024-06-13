@@ -9,7 +9,7 @@ import pageUIs.user.LoginPageUI;
 
 public class UserLoginPageObject extends BaseElement{
 	private WebDriver driver;
-	
+
 	public UserLoginPageObject (WebDriver driver) {
 		super(driver);
 		this.driver = driver;
@@ -50,7 +50,7 @@ public class UserLoginPageObject extends BaseElement{
 	public UserHomePageObject loginAsUser(String email, String password) {
 		inputToEmail(email);
 		inputToPassword(password);
-		return clickToLoginButton();	
+		return clickToLoginButton();
 	}
 
 }

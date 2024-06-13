@@ -5,19 +5,24 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.compress.harmony.pack200.NewAttribute;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.chromium.ChromiumDriverLogLevel;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeDriverService;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxDriverLogLevel;
+import org.openqa.selenium.firefox.FirefoxDriverService;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.GeckoDriverService;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.safari.SafariOptions;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
@@ -37,16 +42,15 @@ public class BaseTest {
 		log = LogManager.getLogger(getClass());
 	}
 
-	protected WebDriver getBrowserDriver(String browserName, String environmentName) {
+	protected WebDriver getBrowserDriver(String browserName, String environmentName){
 
 		BrowserList browser = BrowserList.valueOf(browserName.toUpperCase());
 
 		switch (browser) {
 		case FIREFOX:
-			FirefoxOptions ff_options = new FirefoxOptions();
-			ff_options.setBinary("/Applications/Firefox.app/Contents/MacOS/firefox");
-			ff_options.addArguments("window-size=1920x1080");
-			driver = WebDriverManager.firefoxdriver().capabilities(ff_options).create();
+			System.setProperty(GeckoDriverService.GECKO_DRIVER_LOG_LEVEL_PROPERTY, GlobalConstants.BROWSER_LOG_PATH + "FirefoxDriverLogLevel.log");
+			FirefoxDriverService ffDriverService = new GeckoDriverService.Builder().withLogLevel(FirefoxDriverLogLevel.DEBUG).build();
+			driver = new FirefoxDriver(ffDriverService);
 			break;
 
 		case H_FIREFOX:
@@ -58,8 +62,9 @@ public class BaseTest {
 			break;
 
 		case CHROME:
-			WebDriverManager.chromedriver().clearDriverCache().setup();
-			driver = WebDriverManager.chromedriver().create();
+			System.setProperty(ChromeDriverService.CHROME_DRIVER_LOG_LEVEL_PROPERTY, GlobalConstants.BROWSER_LOG_PATH + "ChromeDriverLogLevel.log");
+			ChromeDriverService chromeDriverService = new ChromeDriverService.Builder().withLogLevel(ChromiumDriverLogLevel.DEBUG).build();
+			driver = new ChromeDriver(chromeDriverService);
 			break;
 
 		case H_CHROME:
@@ -70,8 +75,9 @@ public class BaseTest {
 			break;
 
 		case EDGE:
-			WebDriverManager.chromedriver().clearDriverCache().setup();
-			driver = WebDriverManager.edgedriver().create();
+			System.setProperty(EdgeDriverService.EDGE_DRIVER_LOG_LEVEL_PROPERTY, GlobalConstants.BROWSER_LOG_PATH + "EdgeDriverLogLevel.log");
+			EdgeDriverService edgeDriverService = new EdgeDriverService.Builder().withLoglevel(ChromiumDriverLogLevel.DEBUG).build();
+			driver = new EdgeDriver(edgeDriverService);
 			break;
 
 		case H_EDGE:
@@ -96,8 +102,8 @@ public class BaseTest {
 			break;
 
 		case SAFARI:
-			WebDriverManager.safaridriver().setup();
-			driver = new SafariDriver();
+			SafariOptions safariOptions = new SafariOptions();
+			driver = new SafariDriver(safariOptions);
 			break;
 
 		default:
@@ -105,6 +111,7 @@ public class BaseTest {
 		}
 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
+
 		driver.manage().window().maximize();
 		driver.get(getEnvironmentUrl(environmentName));
 		return driver;
@@ -275,9 +282,9 @@ public class BaseTest {
 			File file = new File(pathFolderDownload);
 			File[] listOfFiles = file.listFiles();
 			if (listOfFiles.length != 0) {
-				for (int i = 0; i < listOfFiles.length; i++) {
-					if (listOfFiles[i].isFile() && !listOfFiles[i].getName().equals("environment.properties")) {
-						new File(listOfFiles[i].toString()).delete();
+				for (File listOfFile : listOfFiles) {
+					if (listOfFile.isFile() && !listOfFile.getName().equals("environment.properties")) {
+						new File(listOfFile.toString()).delete();
 					}
 				}
 			}
@@ -286,62 +293,62 @@ public class BaseTest {
 		}
 	}
 
-//	protected void closeBrowserDriver() {
-//		String cmd = null;
-//		try {
-//			String osName = System.getProperty("os.name").toLowerCase();
-//			log.info("OS name = " + osName);
-//
-//			String driverInstanceName = driver.toString().toLowerCase();
-//			log.info("Driver instance name = " + driverInstanceName);
-//
-//			String browserDriverName = null;
-//
-//			if (driverInstanceName.contains("chrome")) {
-//				browserDriverName = "chromedriver";
-//			} else if (driverInstanceName.contains("internetexplorer")) {
-//				browserDriverName = "IEDriverServer";
-//			} else if (driverInstanceName.contains("firefox")) {
-//				browserDriverName = "geckodriver";
-//			} else if (driverInstanceName.contains("edge")) {
-//				browserDriverName = "msedgedriver";
-//			} else if (driverInstanceName.contains("opera")) {
-//				browserDriverName = "operadriver";
-//			} else {
-//				browserDriverName = "safaridriver";
-//			}
-//
-//			if (osName.contains("window")) {
-//				cmd = "taskkill /F /FI \"IMAGENAME eq " + browserDriverName + "*\"";
-//			} else {
-//				cmd = "pkill " + browserDriverName;
-//			}
-//
-//			if (driver != null) {
-//				driver.manage().deleteAllCookies();
-//				driver.quit();
-//			}
-//		} catch (Exception e) {
-//			log.info(e.getMessage());
-//		} finally {
-//			try {
-//				Process process = Runtime.getRuntime().exec(cmd);
-//				process.waitFor();
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			} catch (InterruptedException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//	}
-
 	protected void closeBrowserDriver() {
-		if (driver != null) {
-			driver.manage().deleteAllCookies();
-			driver.quit();
-		}
-		else {
-			driver.quit();
+		String cmd = null;
+		try {
+			String osName = System.getProperty("os.name").toLowerCase();
+			log.info("OS name = " + osName);
+
+			String driverInstanceName = driver.toString().toLowerCase();
+			log.info("Driver instance name = " + driverInstanceName);
+
+			String browserDriverName = null;
+
+			if (driverInstanceName.contains("chrome")) {
+				browserDriverName = "chromedriver";
+			} else if (driverInstanceName.contains("internetexplorer")) {
+				browserDriverName = "IEDriverServer";
+			} else if (driverInstanceName.contains("firefox")) {
+				browserDriverName = "geckodriver";
+			} else if (driverInstanceName.contains("edge")) {
+				browserDriverName = "msedgedriver";
+			} else if (driverInstanceName.contains("opera")) {
+				browserDriverName = "operadriver";
+			} else {
+				browserDriverName = "safaridriver";
+			}
+
+			if (osName.contains("window")) {
+				cmd = "taskkill /F /FI \"IMAGENAME eq " + browserDriverName + "*\"";
+			} else {
+				cmd = "pkill " + browserDriverName;
+			}
+
+			if (driver != null) {
+				driver.manage().deleteAllCookies();
+				driver.quit();
+			}
+		} catch (Exception e) {
+			log.info(e.getMessage());
+		} finally {
+			try {
+				Process process = Runtime.getRuntime().exec(cmd);
+				process.waitFor();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 	}
+
+//	protected void closeBrowserDriver() {
+//		if (driver != null) {
+//			driver.manage().deleteAllCookies();
+//			driver.quit();
+//		}
+//		else {
+//			driver.quit();
+//		}
+//	}
 }

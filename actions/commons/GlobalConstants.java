@@ -21,5 +21,6 @@ public class GlobalConstants {
 	public static final String EXTENT_PATH_V5 = PROJECT_PATH + File.separator + "extentReport" + File.separator + "ExtentReportV5.html";
 	public static final String JAVA_VERSION = System.getProperty("java.version");
 	public static final String BROWSER_EXTENSION_PATH = PROJECT_PATH + File.separator + "browserExtensions" + File.separator;
+	public static final String BROWSER_LOG_PATH = PROJECT_PATH + File.separator + "browserLogs" + File.separator;
 
 }

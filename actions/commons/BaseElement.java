@@ -3,8 +3,6 @@ package commons;
 import org.openqa.selenium.WebDriver;
 
 import pageUIs.user.BaseElementUI;
-import pageUIs.user.HomePageUI;
-import pageUIs.user.RegisterPageUI;
 
 public class BaseElement extends BasePage {
 

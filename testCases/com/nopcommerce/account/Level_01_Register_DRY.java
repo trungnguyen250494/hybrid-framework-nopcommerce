@@ -2,11 +2,9 @@ package com.nopcommerce.account;
 
 import java.time.Duration;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -99,7 +97,7 @@ public class Level_01_Register_DRY {
 		driver.findElement(By.cssSelector("#register-button")).click();
 
 		Assert.assertEquals(driver.findElement(By.cssSelector("div.result")).getText(), "Your registration completed");
-		
+
 		System.out.println(email);
 
 	}
@@ -121,12 +119,12 @@ public class Level_01_Register_DRY {
 		driver.findElement(By.cssSelector("#ConfirmPassword")).sendKeys("Tester@123");
 
 		driver.findElement(By.cssSelector("#register-button")).click();
-		
+
 		WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		explicitWait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("div.validation-summary-errors li"))));
 
 		Assert.assertEquals(driver.findElement(By.cssSelector("div.validation-summary-errors li")).getText(), "The specified email already exists");
-		
+
 		System.out.println(email);
 
 	}
@@ -154,7 +152,7 @@ public class Level_01_Register_DRY {
 		Assert.assertEquals(driver.findElement(By.cssSelector("span#Password-error")).getText(), "Password must meet the following rules:\nmust have at least 6 characters");
 
 	}
-	
+
 	@Test
 	public void TC_06_Register_Invalid_Confirm_Password() {
 		driver.get("https://demo.nopcommerce.com/");

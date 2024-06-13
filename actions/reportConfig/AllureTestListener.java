@@ -19,7 +19,7 @@ public class AllureTestListener implements ITestListener {
 	// Screenshot attachments for Allure
 	@Attachment(value = "Screenshot of {0}", type = "image/png")
 	public static byte[] saveScreenshotPNG(String testName, WebDriver driver) {
-		return (byte[]) ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 	}
 
 	// Text attachments for Allure
@@ -41,7 +41,7 @@ public class AllureTestListener implements ITestListener {
 		saveScreenshotPNG(iTestResult.getName(), driver);
 		saveTextLog(getTestMethodName(iTestResult) + " failed and screenshot taken!");
 	}
-	
+
 	@Override
 	public void onStart(ITestContext iTestContext) {
 		// TODO Auto-generated method stub

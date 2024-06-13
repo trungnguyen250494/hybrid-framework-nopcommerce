@@ -19,7 +19,7 @@ public class UserRegisterPageObject extends BaseElement {
 		waitForElementClickable(driver, RegisterPageUI.REGISTER_BUTTON);
 		clickToElement(driver, RegisterPageUI.REGISTER_BUTTON);
 	}
-	
+
 	@Step("Get the error message at the First name text box")
 	public String getErrorMessageAtFirstNameTextbox() {
 		waitUntilElementVisible(driver, RegisterPageUI.FIRST_NAME_ERROR_MESSAGE);
@@ -54,35 +54,35 @@ public class UserRegisterPageObject extends BaseElement {
 	public void inputToFirstNameTextbox(String firstName) {
 		waitUntilElementVisible(driver, RegisterPageUI.FIRST_NAME_TEXTBOX);
 		sendKeyToElement(driver, RegisterPageUI.FIRST_NAME_TEXTBOX, firstName);
-		
+
 	}
 
 	@Step("Input to the Last name textbox with value is {0}")
 	public void inputToLastNameTextbox(String lastName) {
 		waitUntilElementVisible(driver, RegisterPageUI.LAST_NAME_TEXTBOX);
 		sendKeyToElement(driver, RegisterPageUI.LAST_NAME_TEXTBOX, lastName);
-		
+
 	}
 
 	@Step("Input to the Email textbox with value is {0}")
 	public void inputToEmailTextbox(String email) {
 		waitUntilElementVisible(driver, RegisterPageUI.EMAIL_TEXTBOX);
 		sendKeyToElement(driver, RegisterPageUI.EMAIL_TEXTBOX, email);
-		
+
 	}
 
 	@Step("Input to the Password textbox with value is {0}")
 	public void inputToPasswordTextbox(String password) {
 		waitUntilElementVisible(driver, RegisterPageUI.PASSWORD_TEXTBOX);
 		sendKeyToElement(driver, RegisterPageUI.PASSWORD_TEXTBOX, password);
-		
+
 	}
 
 	@Step("Input to the Confirm password textbox with value is {0}")
 	public void inputToConfirmPasswordTextbox(String confirmPassword) {
 		waitUntilElementVisible(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX);
 		sendKeyToElement(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX, confirmPassword);
-		
+
 	}
 
 	@Step("Get the Register success message")
@@ -99,7 +99,7 @@ public class UserRegisterPageObject extends BaseElement {
 
 	@Step("Scroll to Email textbox")
 	public void scrollToEmail() {
-		scrollToElement(driver, RegisterPageUI.EMAIL_TEXTBOX);		
+		scrollToElement(driver, RegisterPageUI.EMAIL_TEXTBOX);
 	}
 
 }

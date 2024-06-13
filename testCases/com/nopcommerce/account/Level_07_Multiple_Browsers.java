@@ -22,7 +22,7 @@ public class Level_07_Multiple_Browsers extends BaseTest{
 	public void beforeClass(String browserName, String environmentName) {
 		driver = getBrowserDriver(browserName,environmentName);
 		homePage = new UserHomePageObject(driver);
-		
+
 		firstName = "Tester";
 		lastName = "Tester";
 		password = "Tester@123";
@@ -32,13 +32,13 @@ public class Level_07_Multiple_Browsers extends BaseTest{
 
 	@Test
 	public void Register_01_Register_Empty_Data() {
-		
+
 		System.out.println("Register_01 - Step 01: Click to the Register link");
-		
+
 		homePage.clickToRegisterLink();
-		
+
 		registerPage = new UserRegisterPageObject(driver);
-		
+
 		System.out.println("Register_01 - Step 02: Click to the Register button");
 
 		registerPage.clickToRegisterButton();
@@ -49,7 +49,7 @@ public class Level_07_Multiple_Browsers extends BaseTest{
 		Assert.assertEquals(registerPage.getErrorMessageAtEmailTextbox(), "Email is required.");
 		Assert.assertEquals(registerPage.getErrorMessageAtPasswordTextbox(), "Password is required.");
 		Assert.assertEquals(registerPage.getErrorMessageAtConfirmPasswordTextbox(), "Password is required.");
-		
+
 	}
 
 	@Test
@@ -66,9 +66,9 @@ public class Level_07_Multiple_Browsers extends BaseTest{
 		registerPage.inputToEmailTextbox("abc#xyz");
 		registerPage.inputToPasswordTextbox(password);
 		registerPage.inputToConfirmPasswordTextbox(confirmPassword);
-		
+
 		System.out.println("Register_02 - Step 03: Click to the Register button");
-		registerPage.clickToRegisterButton();	
+		registerPage.clickToRegisterButton();
 
 		System.out.println("Register_02 - Step 04: Verify wrong email - error message displays");
 		Assert.assertEquals(registerPage.getErrorMessageAtEmailTextbox(), "Wrong email");

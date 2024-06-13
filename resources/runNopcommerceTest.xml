@@ -3,10 +3,8 @@
 <suite name="NopCommerce">
 	<parameter name="environment" value="dev" />
 	<listeners>
-	<!-- 
-	<listener class-name="commons.MethodListener"></listener>
-	<listener class-name="reportConfig.AllureTestListener"></listener>
-	-->
+		<listener class-name="commons.MethodListener"></listener>
+		<listener class-name="reportConfig.AllureTestListener"></listener>
 	</listeners>
 	<!-- 
 	<test name="Run on Firefox">
@@ -23,23 +21,30 @@
 			<class name="com.nopcommerce.cookie.Level_22_Login" />
 		</classes>
 	</test>
-	
-	<test name="Run on Firefox" preserve-order="true">
-		<parameter name="browser" value="firefox" />
-		<classes>
-			<class name="com.nopcommerce.cookie.Common_Register" />
-			<class name="com.nopcommerce.cookie.Level_22_Login" />
-		</classes>
-	</test>
-	
-	<test name="Run on Edge" preserve-order="true">
-		<parameter name="browser" value="edge" />
-		<classes>
-			<class name="com.nopcommerce.cookie.Common_Register" />
-			<class name="com.nopcommerce.cookie.Level_22_Login" />
-		</classes>
-	</test>
+	<!---->
+	<!--	<test name="Run on Firefox" preserve-order="true">-->
+	<!--		<parameter name="browser" value="firefox" />-->
+	<!--		<classes>-->
+	<!--			<class name="com.nopcommerce.cookie.Common_Register" />-->
+	<!--			<class name="com.nopcommerce.cookie.Level_22_Login" />-->
+	<!--		</classes>-->
+	<!--	</test>-->
+	<!---->
+	<!--	<test name="Run on Edge" preserve-order="true">-->
+	<!--		<parameter name="browser" value="edge" />-->
+	<!--		<classes>-->
+	<!--			<class name="com.nopcommerce.cookie.Common_Register" />-->
+	<!--			<class name="com.nopcommerce.cookie.Level_22_Login" />-->
+	<!--		</classes>-->
+	<!--	</test>-->
 
+	<!--	<test name="Run on Safari" preserve-order="true">-->
+	<!--		<parameter name="browser" value="safari" />-->
+	<!--		<classes>-->
+	<!--			<class name="com.nopcommerce.cookie.Common_Register" />-->
+	<!--			<class name="com.nopcommerce.cookie.Level_22_Login" />-->
+	<!--		</classes>-->
+	<!--	</test>-->
 
 	<!--	<test name="Run on Coc Coc">-->
 	<!--	<parameter name="browser" value="coccoc"/>-->
@@ -61,13 +66,6 @@
 	<!--<class name="com.nopcommerce.user.Level_04_Multiple_Browsers" />-->
 	<!--</classes>-->
 	<!--</test>-->
-
-	<!--	<test name="Run on Safari">-->
-	<!--		<parameter name="browser" value="safari" />-->
-	<!--		<classes>-->
-	<!--			<class name="com.nopcommerce.user.Level_04_Multiple_Browsers" />-->
-	<!--		</classes>-->
-	<!--	</test>-->
 
 	<!-- Test -->
 </suite> <!-- Suite -->

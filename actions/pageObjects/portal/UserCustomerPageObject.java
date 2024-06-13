@@ -2,9 +2,7 @@ package pageObjects.portal;
 
 import org.openqa.selenium.WebDriver;
 
-import commons.BasePage;
 import pageUIs.user.CustomerPageUI;
-import pageUIs.user.RegisterPageUI;
 
 public class UserCustomerPageObject extends UserMyAccountSideBarObject {
 	private WebDriver driver;

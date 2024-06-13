@@ -60,7 +60,6 @@
 	<classpathentry kind="lib" path="libWebDriverManager/slf4j-api-2.0.12.jar"/>
 	<classpathentry kind="lib" path="libAssertJ/assertj-core-3.24.2.jar"/>
 	<classpathentry kind="lib" path="libAssertJ/byte-buddy-1.12.21.jar"/>
-	<classpathentry kind="lib" path="libSelenium/selenium-server-4.4.0.jar"/>
 	<classpathentry kind="lib" path="libWebDriverManager/webdrivermanager-5.7.0.jar"/>
 	<classpathentry kind="lib" path="libWebDriverManager/guava-33.2.1-jre.jar"/>
 	<classpathentry kind="lib" path="libSelenium/selenium-server-4.21.0.jar"/>

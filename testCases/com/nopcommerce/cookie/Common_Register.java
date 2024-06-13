@@ -6,7 +6,6 @@ import java.util.Set;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 
@@ -24,7 +23,7 @@ public class Common_Register extends BaseTest {
 
 	@Parameters({ "browser", "environment" })
 	@BeforeTest
-	public void beforeTest(String browserName, String environmentName) {
+	public void beforeTest(String browserName, String environmentName){
 		driver = getBrowserDriver(browserName, environmentName);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 
@@ -33,7 +32,7 @@ public class Common_Register extends BaseTest {
 		correctPassword = "Tester@123";
 		confirmPassword = "Tester@123";
 		validEmail = "tester" + getRandomNumber() + "@yopmail.com";
-		
+
 		System.out.println("Register_01 - Step 01: Click to the Register link");
 
 		homePage.clickToHeaderLinkByName("Register");
@@ -52,9 +51,9 @@ public class Common_Register extends BaseTest {
 
 		System.out.println("Register_01 - Step 04: Verify success message displays");
 		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
-		
+
 		cookies = registerPage.getBrowserCookies(driver);
-		
+
 		driver.quit();
 
 	}

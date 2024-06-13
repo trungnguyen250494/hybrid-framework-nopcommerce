@@ -5,11 +5,11 @@ public class Topic_01_Class_Object_Student {
 	private String studentName;
 	private Float knowledgePoint;
 	private Float practicePoint;
-	
+
 	private int getStudentID() {
 		return studentID;
 	}
-	
+
 	public String getStudentName() {
 		return studentName;
 	}
@@ -48,7 +48,7 @@ public class Topic_01_Class_Object_Student {
 		firstStudent.showStudentInfo();
 
 	}
-	
+
 	private Float getAveragePoint() {
 		return (knowledgePoint + practicePoint * 2) / 3;
 	}
@@ -61,7 +61,7 @@ public class Topic_01_Class_Object_Student {
 		System.out.println("Student Knowledge point = "+getKnowledgePoint()+ " \n");
 		System.out.println("Student Practice point = "+getPracticePoint()+ " \n");
 		System.out.println("Student Average Point = "+getAveragePoint()+ " \n");
-		
+
 	}
 
 }

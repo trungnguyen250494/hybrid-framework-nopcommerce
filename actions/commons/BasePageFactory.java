@@ -3,7 +3,7 @@ package commons;
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePageFactory {
-	
+
 	public static BasePageFactory getBasePageObject() {
 		return new BasePageFactory();
 	}
@@ -108,10 +108,6 @@ public class BasePageFactory {
 		}
 	}
 
-	private By getByXpath(String xpathLocator) {
-		return By.xpath(xpathLocator);
-	}
-
 	private WebElement getWebElement(WebDriver driver, String xpathLocator) {
 		return driver.findElement(By.xpath(xpathLocator));
 	}
@@ -148,7 +144,7 @@ public class BasePageFactory {
 		return select.isMultiple();
 	}
 
-	
+
 
 	protected void selectItemInCustomDropDown(WebDriver driver, WebElement locatorButton, String locatorItems, String inputText) {
 		clickToElement(driver, locatorButton);
@@ -173,7 +169,6 @@ public class BasePageFactory {
 		try {
 			Thread.sleep(second * 1000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -300,7 +295,7 @@ public class BasePageFactory {
 		JavascriptExecutor jsExecutor;
 		jsExecutor = (JavascriptExecutor) driver;
 
-		ExpectedCondition<Boolean> jQueryLoad = new ExpectedCondition<Boolean>() {
+		ExpectedCondition<Boolean> jQueryLoad = new ExpectedCondition<>() {
 			@Override
 			public Boolean apply(WebDriver driver) {
 				try {
@@ -311,7 +306,7 @@ public class BasePageFactory {
 			}
 		};
 
-		ExpectedCondition<Boolean> jsLoad = new ExpectedCondition<Boolean>() {
+		ExpectedCondition<Boolean> jsLoad = new ExpectedCondition<>() {
 			@Override
 			public Boolean apply(WebDriver driver) {
 				return jsExecutor.executeScript("return document.readyState").toString().equals("complete");
@@ -337,7 +332,7 @@ public class BasePageFactory {
 			return false;
 		}
 	}
-	
+
 	protected void waitUntilElementVisible(WebDriver driver, WebElement element) {
 		WebDriverWait explicitWait = new WebDriverWait(driver,Duration.ofSeconds(timeout));
 		explicitWait.until(ExpectedConditions.visibilityOf(element));
@@ -347,7 +342,7 @@ public class BasePageFactory {
 		WebDriverWait explicitWait = new WebDriverWait(driver,Duration.ofSeconds(timeout));
 		explicitWait.until(ExpectedConditions.visibilityOfAllElements(elements));
 	}
-	
+
 	protected void waitUntilElementInvisible(WebDriver driver, WebElement element) {
 		WebDriverWait explicitWait = new WebDriverWait(driver,Duration.ofSeconds(timeout));
 		explicitWait.until(ExpectedConditions.invisibilityOf(element));
@@ -357,12 +352,12 @@ public class BasePageFactory {
 		WebDriverWait explicitWait = new WebDriverWait(driver,Duration.ofSeconds(timeout));
 		explicitWait.until(ExpectedConditions.invisibilityOfAllElements(elements));
 	}
-	
+
 	protected void waitForElementClickable(WebDriver driver, WebElement element) {
 		WebDriverWait explicitWait = new WebDriverWait(driver,Duration.ofSeconds(timeout));
 		explicitWait.until(ExpectedConditions.elementToBeClickable(element));
 	}
-	
+
 	private long timeout = 30;
-	
+
 }

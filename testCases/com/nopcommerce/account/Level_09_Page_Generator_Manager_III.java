@@ -1,9 +1,8 @@
 package com.nopcommerce.account;
 
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -12,7 +11,6 @@ import org.testng.annotations.Test;
 
 import commons.BaseTest;
 import commons.PageGeneratorManager;
-import pageObjects.portal.UserCustomerPageObject;
 import pageObjects.portal.UserHomePageObject;
 import pageObjects.portal.UserLoginPageObject;
 import pageObjects.portal.UserRegisterPageObject;
@@ -23,8 +21,7 @@ public class Level_09_Page_Generator_Manager_III extends BaseTest{
 	private UserHomePageObject homePage;
 	private UserLoginPageObject loginPage;
 	private UserRegisterPageObject registerPage;
-	private UserCustomerPageObject myAccountPage;
-	
+
 
 	@Parameters({"browser","environment"})
 	@BeforeClass
@@ -41,7 +38,7 @@ public class Level_09_Page_Generator_Manager_III extends BaseTest{
 		invalidEmail = "tester@yopmail.com@123";
 		notFoundEmail = "testerHello@yopmail.com";
 
-		System.out.println("Pre-condition - Step 01: Click to the Register link");	
+		System.out.println("Pre-condition - Step 01: Click to the Register link");
 
 		registerPage = homePage.clickToRegisterLink();
 
@@ -86,7 +83,7 @@ public class Level_09_Page_Generator_Manager_III extends BaseTest{
 		System.out.println("Login_02 - Step 02: Input invalid email");
 
 		loginPage.inputToEmail(invalidEmail);
-		
+
 		System.out.println("Login_02 - Step 03: Click to the Login button");
 		loginPage.clickToLoginButton();
 
@@ -103,7 +100,7 @@ public class Level_09_Page_Generator_Manager_III extends BaseTest{
 
 		System.out.println("Login_03 - Step 02: Input Not Found email");
 		loginPage.inputToEmail(notFoundEmail);
-		
+
 		System.out.println("Login_03 - Step 03: Click to the Login button");
 		loginPage.clickToLoginButton();
 
@@ -120,7 +117,7 @@ public class Level_09_Page_Generator_Manager_III extends BaseTest{
 
 		System.out.println("Login_04 - Step 02: Input existing email");
 		loginPage.inputToEmail(validEmail);
-		
+
 		System.out.println("Login_04 - Step 03: Click to the Login button");
 		loginPage.clickToLoginButton();
 
@@ -137,10 +134,10 @@ public class Level_09_Page_Generator_Manager_III extends BaseTest{
 
 		System.out.println("Login_05 - Step 02: Input existing email");
 		loginPage.inputToEmail(validEmail);
-		
+
 		System.out.println("Login_05 - Step 03: Input invalid password");
 		loginPage.inputToPassword(incorrectPassword);
-	
+
 		System.out.println("Login_05 - Step 04: Click to the Login button");
 		loginPage.clickToLoginButton();
 
@@ -157,20 +154,20 @@ public class Level_09_Page_Generator_Manager_III extends BaseTest{
 
 		System.out.println("Login_06 - Step 02: Input existing email");
 		loginPage.inputToEmail(validEmail);
-		
+
 		System.out.println("Login_06 - Step 03: Input valid password");
 		loginPage.inputToPassword(correctPassword);
-		
+
 		System.out.println("Login_06 - Step 04: Click to the Login button");
 		loginPage.clickToLoginButton();
 
 		System.out.println("Login_06 - Step 05: Verify Log out link display");
-		
+
 		homePage = new UserHomePageObject(driver);
 		Assert.assertTrue(homePage.isLogoutLinkDisplayed());
 		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
-		
-		myAccountPage = homePage.clickToMyAccountLink();
+
+		homePage.clickToMyAccountLink();
 	}
 
 	public int getRandomNumber() {

@@ -1,19 +1,18 @@
 package com.nopcommerce.account;
 
+import java.time.Duration;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import commons.BasePage;
+import commons.GlobalConstants;
 
 public class Level_04_Apply_BasePage_III extends BasePage{
 	WebDriver driver;
@@ -31,7 +30,7 @@ public class Level_04_Apply_BasePage_III extends BasePage{
 		}
 
 		driver = new FirefoxDriver();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
 		driver.manage().window().maximize();
 
 		driver.get("https://demo.nopcommerce.com/");
@@ -121,7 +120,7 @@ public class Level_04_Apply_BasePage_III extends BasePage{
 		sendKeyToElement(driver, "//input[@id='ConfirmPassword']", "Tester@123");
 
 		clickToElement(driver, "//button[@id='register-button']");
-		
+
 		waitUntilElementVisible(driver, "//div[@class='message-error validation-summary-errors']//li");
 
 		Assert.assertEquals(getElementText(driver, "//div[@class='message-error validation-summary-errors']//li"), "The specified email already exists");

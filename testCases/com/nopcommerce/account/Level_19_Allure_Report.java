@@ -9,7 +9,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-
 import commons.BaseTest;
 import commons.PageGeneratorManager;
 import io.qameta.allure.Description;
@@ -33,7 +32,7 @@ public class Level_19_Allure_Report extends BaseTest{
 	private UserLoginPageObject loginPage;
 	private UserCustomerPageObject customerInfoPage;
 
-	
+
 	@Parameters({"browser","environment"})
 	@BeforeClass
 	public void beforeClass(String browserName, String environmentName) {
@@ -78,7 +77,7 @@ public class Level_19_Allure_Report extends BaseTest{
 	public void User_02_Login() {
 	homePage.clickToLogoutLinkAtUserPage(driver);
 	loginPage = homePage.clickToLoginLink();
-	
+
 	loginPage.inputToEmail(validEmail);
 
 	loginPage.inputToPassword(correctPassword);
@@ -92,7 +91,7 @@ public class Level_19_Allure_Report extends BaseTest{
 	Assert.assertFalse(customerInfoPage.isDisplayed());
 	}
 
-	
+
 	public int getRandomNumber() {
 		Random rd = new Random();
 		return rd.nextInt(1000);

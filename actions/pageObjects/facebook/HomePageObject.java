@@ -2,12 +2,13 @@ package pageObjects.facebook;
 
 
 import org.openqa.selenium.WebDriver;
+
 import commons.BasePage;
 import pageUIs.facebook.HomePageUI;
 
 public class HomePageObject extends BasePage {
 	WebDriver driver;
-	
+
 	public HomePageObject(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -16,7 +17,7 @@ public class HomePageObject extends BasePage {
 		waitForElementClickable(driver, HomePageUI.CREATE_NEW_ACCOUNT_BUTTON);
 		clickToElement(driver, HomePageUI.CREATE_NEW_ACCOUNT_BUTTON);
 	}
-	
+
 	public boolean isFirstNameTextboxDisplayed() {
 		return isElementDisplayed(driver, HomePageUI.FIRST_NAME_TEXTBOX);
 	}
@@ -64,7 +65,7 @@ public class HomePageObject extends BasePage {
 		waitUntilElementVisible(driver, HomePageUI.FIRST_NAME_TEXTBOX);
 		sendKeyToElement(driver, HomePageUI.FIRST_NAME_TEXTBOX, firstName);
 	}
-	
+
 	public void inputToSurNameTextbox(String surName) {
 		waitUntilElementVisible(driver, HomePageUI.LAST_NAME_TEXTBOX);
 		sendKeyToElement(driver, HomePageUI.LAST_NAME_TEXTBOX, surName);

@@ -43,7 +43,7 @@ public class Level_13_Handle_Data_Table extends BaseTest {
 
 		Assert.assertTrue(homePageObject.isPageActiveByNumber("2"));
 	}
-	
+
 	@Test
 	public void TC_03_Search_By_Row_Values() {
 
@@ -53,7 +53,7 @@ public class Level_13_Handle_Data_Table extends BaseTest {
 
 		Assert.assertTrue(homePageObject.isRowDisplayedByValues("384187","Afghanistan","407124","791312"));
 	}
-	
+
 	@Test
 	public void TC_04_Click_Action_Buttons() {
 
@@ -62,18 +62,18 @@ public class Level_13_Handle_Data_Table extends BaseTest {
 		homePageObject.clickToTheActionButtonByCountry("AFRICA", "remove");
 		homePageObject.waitInSecond(2);
 		homePageObject.refreshCurrentPage(driver);
-		
+
 		homePageObject.clickToTheActionButtonByCountry("Afghanistan", "edit");
 		homePageObject.waitInSecond(2);
 	}
-	
+
 	@Test
 	public void TC_05_Get_All_Column_Values() {
 		homePageObject.refreshCurrentPage(driver);
 		homePageObject.getAllPagesValueByColumnName("Country");
 		homePageObject.getAllPagesValueByColumnName("Total");
 	}
-	
+
 	@Test
 	public void TC_06_Action_By_Index() {
 		homePageObject.openPageURL(driver, "https://www.jqueryscript.net/demo/jQuery-Dynamic-Data-Grid-Plugin-appendGrid/");

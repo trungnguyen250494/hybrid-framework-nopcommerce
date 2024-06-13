@@ -1,20 +1,16 @@
 package com.nopcommerce.account;
 
+import java.time.Duration;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import commons.BasePage;
-import net.bytebuddy.agent.builder.AgentBuilder.ClassFileBufferStrategy;
+import commons.GlobalConstants;
 import pageObjects.portal.UserHomePageObject;
 import pageObjects.portal.UserRegisterPageObject;
 
@@ -24,7 +20,6 @@ public class Level_05_Page_Object_01_Register {
 	private String projectPath = System.getProperty("user.dir");
 	private String osName = System.getProperty("os.name");
 	private String email,firstName,lastName,password,confirmPassword;
-	private long timeout = 30;
 	private UserHomePageObject homePage;
 	private UserRegisterPageObject registerPage;
 
@@ -37,12 +32,12 @@ public class Level_05_Page_Object_01_Register {
 		}
 
 		driver = new FirefoxDriver();
-		driver.manage().timeouts().implicitlyWait(timeout, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
 		driver.manage().window().maximize();
 
 		driver.get("https://demo.nopcommerce.com/");
 		homePage = new UserHomePageObject(driver);
-		
+
 		firstName = "Tester";
 		lastName = "Tester";
 		password = "Tester@123";
@@ -53,13 +48,13 @@ public class Level_05_Page_Object_01_Register {
 
 	@Test
 	public void Register_01_Register_Empty_Data() {
-		
+
 		System.out.println("Register_01 - Step 01: Click to the Register link");
-		
+
 		homePage.clickToRegisterLink();
-		
+
 		registerPage = new UserRegisterPageObject(driver);
-		
+
 		System.out.println("Register_01 - Step 02: Click to the Register button");
 
 		registerPage.clickToRegisterButton();
@@ -70,7 +65,7 @@ public class Level_05_Page_Object_01_Register {
 		Assert.assertEquals(registerPage.getErrorMessageAtEmailTextbox(), "Email is required.");
 		Assert.assertEquals(registerPage.getErrorMessageAtPasswordTextbox(), "Password is required.");
 		Assert.assertEquals(registerPage.getErrorMessageAtConfirmPasswordTextbox(), "Password is required.");
-		
+
 	}
 
 	@Test
@@ -86,9 +81,9 @@ public class Level_05_Page_Object_01_Register {
 		registerPage.inputToEmailTextbox("abc#xyz");
 		registerPage.inputToPasswordTextbox(password);
 		registerPage.inputToConfirmPasswordTextbox(confirmPassword);
-		
+
 		System.out.println("Register_02 - Step 03: Click to the Register button");
-		registerPage.clickToRegisterButton();	
+		registerPage.clickToRegisterButton();
 
 		System.out.println("Register_02 - Step 04: Verify wrong email - error message displays");
 		Assert.assertEquals(registerPage.getErrorMessageAtEmailTextbox(), "Wrong email");
@@ -123,7 +118,7 @@ public class Level_05_Page_Object_01_Register {
 		System.out.println("Register_04 - Step 01: Click to the Register link");
 		homePage.clickToRegisterLink();
 		registerPage = new UserRegisterPageObject(driver);
-		
+
 		System.out.println("Register_04 - Step 02: Input all fields value");
 		registerPage.inputToFirstNameTextbox(firstName);
 		registerPage.inputToLastNameTextbox(lastName);
@@ -145,7 +140,7 @@ public class Level_05_Page_Object_01_Register {
 		System.out.println("Register_05 - Step 01: Click to the Register link");
 		homePage.clickToRegisterLink();
 		registerPage = new UserRegisterPageObject(driver);
-		
+
 		System.out.println("Register_05 - Step 02: Input all fields value");
 		registerPage.inputToFirstNameTextbox(firstName);
 		registerPage.inputToLastNameTextbox(lastName);
@@ -165,7 +160,7 @@ public class Level_05_Page_Object_01_Register {
 	public void Register_06_Register_Invalid_Confirm_Password() {
 
 		System.out.println("Register_06 - Step 01: Click to the Register link");
-		homePage.clickToRegisterLink();	
+		homePage.clickToRegisterLink();
 		registerPage = new UserRegisterPageObject(driver);
 
 		System.out.println("Register_06 - Step 02: Input all fields value");

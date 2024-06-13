@@ -83,7 +83,7 @@ public class ReportNGListener extends BaseTest implements ITestListener {
 			return e.getMessage();
 		}
 	}
-	
+
 	public String captureScreenshotBase64(WebDriver driver, String screenshotName) {
 		String screenshotBase64 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
 		return screenshotBase64;

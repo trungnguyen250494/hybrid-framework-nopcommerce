@@ -1,9 +1,8 @@
 package com.nopcommerce.account;
 
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -15,13 +14,9 @@ import commons.GlobalConstants;
 import commons.PageGeneratorManager;
 import pageObjects.admin.AdminDashboardPageObject;
 import pageObjects.admin.AdminLoginPageObject;
-import pageObjects.portal.UserAddressPageObject;
-import pageObjects.portal.UserCustomerPageObject;
 import pageObjects.portal.UserHomePageObject;
 import pageObjects.portal.UserLoginPageObject;
-import pageObjects.portal.UserProductReviewPageObject;
 import pageObjects.portal.UserRegisterPageObject;
-import pageObjects.portal.UserRewardPointPageObject;
 
 public class Level_11_Switch_Role extends BaseTest{
 	private WebDriver driver;
@@ -31,9 +26,6 @@ public class Level_11_Switch_Role extends BaseTest{
 	private AdminLoginPageObject adminLoginPage;
 	private UserRegisterPageObject registerPage;
 	private AdminDashboardPageObject adminDashboardPage;
-	private UserCustomerPageObject userCustomerPage;
-	
-
 	@Parameters({"browser","environment"})
 	@BeforeClass
 	public void beforeClass(String browserName,String environmentName) {
@@ -68,16 +60,16 @@ public class Level_11_Switch_Role extends BaseTest{
 		userHomePage = userLoginPage.loginAsUser(validUserEmail,correctUserPassword);
 		Assert.assertTrue(userHomePage.isLogoutLinkDisplayed());
 		Assert.assertTrue(userHomePage.isMyAccountLinkDisplayed());
-		
+
 		userHomePage.clickToLogoutLinkAtUserPage(driver);
-		
+
 		userHomePage.openPageURL(driver, GlobalConstants.ADMIN_PAGE_URL);
 		adminLoginPage = PageGeneratorManager.getAdminLoginPage(driver);
 		adminDashboardPage = adminLoginPage.loginAsAdmin(adminEmail, adminPassword);
 		Assert.assertTrue(adminDashboardPage.isDashboardHeaderDisplayed());
-		
+
 		adminLoginPage = adminDashboardPage.clickToLogoutLinkAtAdminPage(driver);
-		
+
 	}
 
 	@Test

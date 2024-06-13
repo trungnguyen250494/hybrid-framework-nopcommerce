@@ -1,9 +1,8 @@
 package com.nopcommerce.account;
 
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -18,11 +17,7 @@ import pageFactory.RegisterPageObject;
 
 public class Level_08_Page_Factory extends BaseTest {
 	private WebDriver driver;
-
-	private String projectPath = System.getProperty("user.dir");
-	private String osName = System.getProperty("os.name");
 	private String validEmail, firstName, lastName, correctPassword, confirmPassword, invalidEmail, notFoundEmail, incorrectPassword;
-	private long timeout = 30;
 	private HomePageObject homePage;
 	private LoginPageObject loginPage;
 	private RegisterPageObject registerPage;
@@ -91,7 +86,7 @@ public class Level_08_Page_Factory extends BaseTest {
 		System.out.println("Login_02 - Step 02: Input invalid email");
 
 		loginPage.inputToEmail(invalidEmail);
-		
+
 		System.out.println("Login_02 - Step 03: Click to the Login button");
 		loginPage.clickToLoginButton();
 
@@ -109,7 +104,7 @@ public class Level_08_Page_Factory extends BaseTest {
 
 		System.out.println("Login_03 - Step 02: Input Not Found email");
 		loginPage.inputToEmail(notFoundEmail);
-		
+
 		System.out.println("Login_03 - Step 03: Click to the Login button");
 		loginPage.clickToLoginButton();
 
@@ -127,7 +122,7 @@ public class Level_08_Page_Factory extends BaseTest {
 
 		System.out.println("Login_04 - Step 02: Input existing email");
 		loginPage.inputToEmail(validEmail);
-		
+
 		System.out.println("Login_04 - Step 03: Click to the Login button");
 		loginPage.clickToLoginButton();
 
@@ -145,10 +140,10 @@ public class Level_08_Page_Factory extends BaseTest {
 
 		System.out.println("Login_05 - Step 02: Input existing email");
 		loginPage.inputToEmail(validEmail);
-		
+
 		System.out.println("Login_05 - Step 03: Input invalid password");
 		loginPage.inputToPassword(incorrectPassword);
-	
+
 		System.out.println("Login_05 - Step 04: Click to the Login button");
 		loginPage.clickToLoginButton();
 
@@ -166,15 +161,15 @@ public class Level_08_Page_Factory extends BaseTest {
 
 		System.out.println("Login_06 - Step 02: Input existing email");
 		loginPage.inputToEmail(validEmail);
-		
+
 		System.out.println("Login_06 - Step 03: Input valid password");
 		loginPage.inputToPassword(correctPassword);
-		
+
 		System.out.println("Login_06 - Step 04: Click to the Login button");
 		loginPage.clickToLoginButton();
 
 		System.out.println("Login_06 - Step 05: Verify Log out link display");
-		
+
 		homePage = new HomePageObject(driver);
 		Assert.assertTrue(homePage.isLogoutLinkDisplayed());
 		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());

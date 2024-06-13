@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 
 import commons.BasePage;
 import commons.PageGeneratorManager;
-
 import pageUIs.user.MyAccountSideBarPageUI;
 
 public class UserMyAccountSideBarObject extends BasePage {
@@ -55,7 +54,7 @@ public class UserMyAccountSideBarObject extends BasePage {
 			throw new RuntimeException("Invalid side bar page name");
 		}
 	}
-	
+
 	public void openDynamicSideBarByName(String pageName) {
 		waitForElementClickable(driver, MyAccountSideBarPageUI.DYNAMIC_SIDEBAR_LINK, pageName);
 		clickToElement(driver, MyAccountSideBarPageUI.DYNAMIC_SIDEBAR_LINK, pageName);

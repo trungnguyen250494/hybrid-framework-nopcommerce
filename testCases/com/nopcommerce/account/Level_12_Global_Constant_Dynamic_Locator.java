@@ -1,9 +1,8 @@
 package com.nopcommerce.account;
 
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -22,7 +21,7 @@ import pageObjects.portal.UserRewardPointPageObject;
 
 public class Level_12_Global_Constant_Dynamic_Locator extends BaseTest{
 	private WebDriver driver;
-	private String validEmail, firstName, lastName, correctPassword, confirmPassword, invalidEmail, notFoundEmail, incorrectPassword;
+	private String validEmail, firstName, lastName, correctPassword, confirmPassword;
 	private UserHomePageObject homePage;
 	private UserLoginPageObject loginPage;
 	private UserRegisterPageObject registerPage;
@@ -30,7 +29,7 @@ public class Level_12_Global_Constant_Dynamic_Locator extends BaseTest{
 	private UserAddressPageObject addressPage;
 	private UserProductReviewPageObject productReviewPage;
 	private UserRewardPointPageObject rewardPointPage;
-	
+
 
 	@Parameters({"browser","environment"})
 	@BeforeClass
@@ -41,11 +40,8 @@ public class Level_12_Global_Constant_Dynamic_Locator extends BaseTest{
 		firstName = "Tester";
 		lastName = "Tester";
 		correctPassword = "Tester@123";
-		incorrectPassword = "123";
 		confirmPassword = "Tester@123";
 		validEmail = "tester" + getRandomNumber() + "@yopmail.com";
-		invalidEmail = "tester@yopmail.com@123";
-		notFoundEmail = "testerHello@yopmail.com";
 
 	}
 
@@ -70,7 +66,7 @@ public class Level_12_Global_Constant_Dynamic_Locator extends BaseTest{
 		homePage = new UserHomePageObject(driver);
 		Assert.assertTrue(homePage.isLogoutLinkDisplayed());
 		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
-		
+
 	}
 
 	@Test
@@ -90,7 +86,7 @@ public class Level_12_Global_Constant_Dynamic_Locator extends BaseTest{
 		Assert.assertTrue(customerInfoPage.isNewsLetterChecked());
 
 	}
-	
+
 	@Test
 	public void User_05_Dynamic_Page_2() {
 		customerInfoPage.openDynamicSideBarByName("Addresses");
@@ -104,7 +100,7 @@ public class Level_12_Global_Constant_Dynamic_Locator extends BaseTest{
 
 	}
 
-	
+
 
 	public int getRandomNumber() {
 		Random rd = new Random();

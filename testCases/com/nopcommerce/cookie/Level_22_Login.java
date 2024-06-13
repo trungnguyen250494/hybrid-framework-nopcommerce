@@ -1,9 +1,8 @@
 package com.nopcommerce.cookie;
 
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -12,10 +11,7 @@ import org.testng.annotations.Test;
 
 import commons.BaseTest;
 import commons.PageGeneratorManager;
-import pageObjects.portal.UserCustomerPageObject;
 import pageObjects.portal.UserHomePageObject;
-import pageObjects.portal.UserLoginPageObject;
-import pageObjects.portal.UserRegisterPageObject;
 
 public class Level_22_Login extends BaseTest {
 	private WebDriver driver;
@@ -35,7 +31,7 @@ public class Level_22_Login extends BaseTest {
 		System.out.println("Login_01 - Step 01: Click to the Login link");
 
 		homePage = PageGeneratorManager.getUserHomePage(driver);
-		
+
 		homePage.setCookies(driver, Common_Register.cookies);
 		homePage.waitInSecond(5);
 		homePage.refreshCurrentPage(driver);

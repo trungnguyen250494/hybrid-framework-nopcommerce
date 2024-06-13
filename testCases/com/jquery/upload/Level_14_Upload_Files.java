@@ -8,7 +8,6 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.BaseTest;
-import pageObjects.jquery.HomePageObject;
 import pageObjects.jquery.PageGeneratorManager;
 import pageObjects.jquery.UploadPageObject;
 
@@ -18,7 +17,7 @@ public class Level_14_Upload_Files extends BaseTest {
 	String dalatImageFileName = "DaLat.jpg";
 	String hanoiImageFileName = "HaNoi.jpg";
 	String saigonImageFileName = "SaiGon.jpg";
-	
+
 	String[] fileNames = {dalatImageFileName,hanoiImageFileName,saigonImageFileName};
 
 	@Parameters({ "browser", "url" })
@@ -37,13 +36,13 @@ public class Level_14_Upload_Files extends BaseTest {
 		uploadPage.waitInSecond(2);
 		uploadPage.uploadMultipleFiles(driver, saigonImageFileName);
 		uploadPage.waitInSecond(2);
-		
+
 		Assert.assertTrue(uploadPage.isFileLoadedSuccess(dalatImageFileName));
 		Assert.assertTrue(uploadPage.isFileLoadedSuccess(hanoiImageFileName));
 		Assert.assertTrue(uploadPage.isFileLoadedSuccess(saigonImageFileName));
-		
+
 		uploadPage.clickStartButtonOnEachFile();
-		
+
 		Assert.assertTrue(uploadPage.isPageUploadedSuccess(dalatImageFileName));
 		Assert.assertTrue(uploadPage.isPageUploadedSuccess(hanoiImageFileName));
 		Assert.assertTrue(uploadPage.isPageUploadedSuccess(saigonImageFileName));
@@ -54,18 +53,18 @@ public class Level_14_Upload_Files extends BaseTest {
 		uploadPage.refreshCurrentPage(driver);
 		uploadPage.uploadMultipleFiles(driver, fileNames);
 		uploadPage.waitInSecond(2);
-		
+
 		Assert.assertTrue(uploadPage.isFileLoadedSuccess(dalatImageFileName));
 		Assert.assertTrue(uploadPage.isFileLoadedSuccess(hanoiImageFileName));
 		Assert.assertTrue(uploadPage.isFileLoadedSuccess(saigonImageFileName));
-		
+
 		uploadPage.clickStartButtonOnEachFile();
-		
+
 		Assert.assertTrue(uploadPage.isPageUploadedSuccess(dalatImageFileName));
 		Assert.assertTrue(uploadPage.isPageUploadedSuccess(hanoiImageFileName));
 		Assert.assertTrue(uploadPage.isPageUploadedSuccess(saigonImageFileName));
 	}
-	
+
 	@AfterClass
 	public void afterClass() {
 		driver.quit();

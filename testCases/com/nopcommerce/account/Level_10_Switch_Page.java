@@ -1,9 +1,8 @@
 package com.nopcommerce.account;
 
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -22,7 +21,7 @@ import pageObjects.portal.UserRewardPointPageObject;
 
 public class Level_10_Switch_Page extends BaseTest {
 	private WebDriver driver;
-	private String validEmail, firstName, lastName, correctPassword, confirmPassword, invalidEmail, notFoundEmail, incorrectPassword;
+	private String validEmail, firstName, lastName, correctPassword, confirmPassword;
 	private UserHomePageObject homePage;
 	private UserLoginPageObject loginPage;
 	private UserRegisterPageObject registerPage;
@@ -40,11 +39,8 @@ public class Level_10_Switch_Page extends BaseTest {
 		firstName = "Tester";
 		lastName = "Tester";
 		correctPassword = "Tester@123";
-		incorrectPassword = "123";
 		confirmPassword = "Tester@123";
 		validEmail = "tester" + getRandomNumber() + "@yopmail.com";
-		invalidEmail = "tester@yopmail.com@123";
-		notFoundEmail = "testerHello@yopmail.com";
 
 	}
 

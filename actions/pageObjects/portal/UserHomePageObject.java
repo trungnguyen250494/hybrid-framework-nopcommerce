@@ -47,7 +47,7 @@ public class UserHomePageObject extends BaseElement{
 		clickToElement(driver, HomePageUI.MY_ACCOUNT_LINK);
 		return PageGeneratorManager.getUserCustomerInfoPage(driver);
 	}
-	
+
 	@Step("Verify if the Register link is displayed")
 	public boolean isRegisterLinkDisplayed() {
 		waitUntilElementVisible(driver, HomePageUI.REGISTER_LINK);

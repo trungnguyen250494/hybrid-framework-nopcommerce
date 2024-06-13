@@ -22,13 +22,13 @@ import reportConfig.ExtentTestManager;
 
 public class Level_18_ExtentReportV5 extends BaseTest{
 	private WebDriver driver;
-	private String validEmail, firstName, lastName, correctPassword, confirmPassword, invalidEmail, notFoundEmail, incorrectPassword;
+	private String validEmail, firstName, lastName, correctPassword;
 	private UserHomePageObject homePage;
 	private UserRegisterPageObject registerPage;
 	private UserLoginPageObject loginPage;
 	private UserCustomerPageObject customerInfoPage;
 
-	
+
 	@Parameters({"browser","environment"})
 	@BeforeClass
 	public void beforeClass(String browserName, String environmentName) {
@@ -40,11 +40,7 @@ public class Level_18_ExtentReportV5 extends BaseTest{
 		firstName = "Tester";
 		lastName = "Tester";
 		correctPassword = "Tester@123";
-		incorrectPassword = "123";
-		confirmPassword = "Tester@123";
 		validEmail = "tester" + getRandomNumber() + "@yopmail.com";
-		invalidEmail = "tester@yopmail.com@123";
-		notFoundEmail = "testerHello@yopmail.com";
 
 	}
 
@@ -76,14 +72,14 @@ public class Level_18_ExtentReportV5 extends BaseTest{
 	Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
 	}
 
-	
+
 	@Test
 	public void User_02_Login(Method method) {
 	ExtentTestManager.startTest(method.getName(), "Login to system successfully");
 	ExtentTestManager.getTest().log(Status.INFO, "Login - Step 01: Navigate to Login page");
 	homePage.clickToLogoutLinkAtUserPage(driver);
 	loginPage = homePage.clickToLoginLink();
-	
+
 	ExtentTestManager.getTest().log(Status.INFO, "Login - Step 02: Enter to Email textbox with value is '" + validEmail + "'");
 	loginPage.inputToEmail(validEmail);
 
@@ -103,7 +99,7 @@ public class Level_18_ExtentReportV5 extends BaseTest{
 	Assert.assertFalse(customerInfoPage.isDisplayed());
 	}
 
-	
+
 	public int getRandomNumber() {
 		Random rd = new Random();
 		return rd.nextInt(1000);

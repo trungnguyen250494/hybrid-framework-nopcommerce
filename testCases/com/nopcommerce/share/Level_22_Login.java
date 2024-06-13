@@ -1,9 +1,8 @@
 package com.nopcommerce.share;
 
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -12,10 +11,8 @@ import org.testng.annotations.Test;
 
 import commons.BaseTest;
 import commons.PageGeneratorManager;
-import pageObjects.portal.UserCustomerPageObject;
 import pageObjects.portal.UserHomePageObject;
 import pageObjects.portal.UserLoginPageObject;
-import pageObjects.portal.UserRegisterPageObject;
 
 public class Level_22_Login extends BaseTest {
 	private WebDriver driver;
@@ -25,7 +22,7 @@ public class Level_22_Login extends BaseTest {
 
 	@Parameters({ "browser", "environment" })
 	@BeforeClass
-	public void beforeClass(String browserName, String environmentName) {
+	public void beforeClass(String browserName, String environmentName){
 		driver = getBrowserDriver(browserName, environmentName);
 		homePage = PageGeneratorManager.getUserHomePage(driver);
 
@@ -68,6 +65,6 @@ public class Level_22_Login extends BaseTest {
 
 	@AfterClass
 	public void afterClass() {
-		driver.quit();
+		closeBrowserDriver();
 	}
 }
